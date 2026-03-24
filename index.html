@@ -59,9 +59,19 @@
         <h1>Digilaw Sverige AB</h1>
         <p>Vi ägnar oss åt medlingsuppdrag och juridisk tvistelösning, bl.a. skiljeuppdrag.</p>
         <p>Vi utvecklar även mjukvara.</p>
-        <div class="contact">
-            Kontakt: <a href="mailto:mikael@digilaw.se">mikael@digilaw.se</a>
+        
+        <div class="contact" id="secure-contact">
+            <noscript>Kontakt: mikael (snabel-a) digilaw.se</noscript>
         </div>
     </div>
+
+    <script>
+        // Det här pusslar ihop mejlen för riktiga besökare
+        var part1 = "mikael";
+        var part2 = "digilaw.se";
+        var email = part1 + "@" + part2;
+        var contactBox = document.getElementById("secure-contact");
+        contactBox.innerHTML = 'Kontakt: <a href="mailto:' + email + '">' + email + '</a>';
+    </script>
 </body>
 </html>
