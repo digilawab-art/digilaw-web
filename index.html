@@ -366,24 +366,23 @@
             color: var(--gold-l);
             border-color: var(--gold);
         }
-        .contact-legal {
+        .contact-org {
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 24px;
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px 28px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px 28px;
         }
-        .contact-legal .legal-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2em;
-            color: #fff;
-            margin-bottom: 8px;
+        .contact-org-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
-        .contact-legal p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.88em;
-            line-height: 1.8;
+        .contact-org-item span {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.85em;
             font-weight: 300;
+            line-height: 1.5;
         }
 
         /* FOOTER */
@@ -405,7 +404,7 @@
 
         @media (max-width: 760px) {
             .contact-grid,
-            .contact-legal,
+            .contact-org,
             .org-block { grid-template-columns: 1fr; }
         }
         @media (max-width: 600px) {
@@ -518,28 +517,6 @@
                 <span class="sv">Vi verkar i ett område i stark tillväxt där digitala verktyg alltmer formar hur tvister löses och hur juridiska aktörer arbetar.</span>
                 <span class="en" style="display:none">We operate in a rapidly growing field where digital tools are increasingly shaping how disputes are resolved and how legal practitioners work.</span>
             </p>
-            <div class="org-block">
-                <div class="org-item">
-                    <div class="label"><span class="sv">Bolag</span><span class="en" style="display:none">Company</span></div>
-                    <div class="value">Digilaw Sverige AB</div>
-                </div>
-                <div class="org-item">
-                    <div class="label"><span class="sv">Registrerat säte</span><span class="en" style="display:none">Registered office</span></div>
-                    <div class="value">Umeå, Sverige</div>
-                </div>
-                <div class="org-item">
-                    <div class="label"><span class="sv">Org.nr</span><span class="en" style="display:none">Reg. no.</span></div>
-                    <div class="value">559330-4859</div>
-                </div>
-                <div class="org-item">
-                    <div class="label">VAT</div>
-                    <div class="value">SE559330485901</div>
-                </div>
-                <div class="org-item">
-                    <div class="label"><span class="sv">Domän</span><span class="en" style="display:none">Domain</span></div>
-                    <div class="value">digilaw.se</div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -548,6 +525,8 @@
         <span class="en" style="display:none">Contact</span>
     </div>
     <div class="contact-card">
+
+        <!-- Zon 1: Kontaktuppgifter -->
         <div class="contact-grid">
             <div class="contact-item">
                 <div class="contact-label">
@@ -571,28 +550,36 @@
                 <span>Umeå, Sverige</span>
             </div>
         </div>
-        <div class="contact-legal">
-            <div>
-                <div class="legal-title">
-                    <span class="sv">Företagsuppgifter</span>
-                    <span class="en" style="display:none">Corporate information</span>
-                </div>
-                <p>
-                    <span class="sv">Digilaw Sverige AB är ett svenskt aktiebolag med organisationsnummer 559330-4859 och VAT-nummer SE559330485901.</span>
-                    <span class="en" style="display:none">Digilaw Sverige AB is a Swedish limited company with registration number 559330-4859 and VAT number SE559330485901.</span>
-                </p>
+
+        <!-- Zon 2: Formell bolagsinformation -->
+        <div class="contact-org">
+            <div class="contact-org-item">
+                <div class="contact-label"><span class="sv">Bolag</span><span class="en" style="display:none">Company</span></div>
+                <span>Digilaw Sverige AB</span>
             </div>
-            <div>
-                <div class="legal-title">
-                    <span class="sv">Officiell webbplats</span>
-                    <span class="en" style="display:none">Official website</span>
-                </div>
-                <p>
-                    <span class="sv">Denna webbplats, digilaw.se, är Digilaw Sverige AB:s officiella domän och används för bolagets externa information och kontakt.</span>
-                    <span class="en" style="display:none">This website, digilaw.se, is the official domain of Digilaw Sverige AB and is used for the company's external information and contact.</span>
-                </p>
+            <div class="contact-org-item">
+                <div class="contact-label"><span class="sv">Org.nr</span><span class="en" style="display:none">Reg. no.</span></div>
+                <span>559330-4859</span>
+            </div>
+            <div class="contact-org-item">
+                <div class="contact-label">VAT</div>
+                <span>SE559330485901</span>
+            </div>
+            <div class="contact-org-item">
+                <div class="contact-label"><span class="sv">Säte</span><span class="en" style="display:none">Registered</span></div>
+                <span>Umeå, Sverige</span>
+            </div>
+            <div class="contact-org-item">
+                <div class="contact-label"><span class="sv">Domän</span><span class="en" style="display:none">Domain</span></div>
+                <span>digilaw.se</span>
+            </div>
+            <div class="contact-org-item">
+                <div class="contact-label"><span class="sv">Officiell webbplats</span><span class="en" style="display:none">Official website</span></div>
+                <span class="sv">Denna webbplats är Digilaw Sverige AB:s officiella domän.</span>
+                <span class="en" style="display:none">This website is the official domain of Digilaw Sverige AB.</span>
             </div>
         </div>
+
     </div>
 
     <footer>
