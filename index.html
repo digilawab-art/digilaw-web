@@ -333,42 +333,73 @@
         .org-block .org-item { margin-bottom: 8px; }
 
         /* footer */
-        footer {
-            border-top: 1px solid #e0ddd6;
-            padding: 32px 0;
-            display: flex;
-            justify-content: space-between;
+        .contact-card {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
+            background: var(--navy);
+            border-radius: 4px;
+            padding: 36px 40px;
+            margin-bottom: 40px;
+            gap: 0;
         }
-        footer .footer-copy {
-            font-size: 0.78em;
-            color: #aaa;
-            font-weight: 300;
-        }
-        .footer-contact {
+        .contact-item {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 4px;
+            gap: 8px;
+            padding: 0 20px;
         }
-        .footer-contact .label {
+        .contact-item:first-child { padding-left: 0; }
+        .contact-item:last-child  { padding-right: 0; }
+        .contact-label {
             font-size: 0.65em;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--muted);
+            color: rgba(255,255,255,0.35);
         }
-        footer a {
-            color: var(--navy);
+        .contact-item a,
+        .contact-item span a {
+            color: #fff;
             text-decoration: none;
-            font-size: 0.95em;
-            font-weight: 500;
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 1px;
-            transition: color 0.2s;
+            font-size: 1em;
+            font-weight: 400;
+            border-bottom: 1px solid rgba(201,168,76,0.4);
+            padding-bottom: 2px;
+            transition: color 0.2s, border-color 0.2s;
+            width: fit-content;
         }
-        footer a:hover { color: var(--gold); }
+        .contact-item a:hover,
+        .contact-item span a:hover {
+            color: var(--gold-l);
+            border-color: var(--gold);
+        }
+        .contact-divider {
+            width: 1px;
+            height: 48px;
+            background: rgba(255,255,255,0.1);
+            justify-self: center;
+        }
+
+        footer {
+            border-top: 1px solid #e0ddd6;
+            padding: 24px 0;
+            text-align: center;
+        }
+        footer .footer-copy {
+            font-size: 0.75em;
+            color: #bbb;
+            font-weight: 300;
+        }
+
+        @media (max-width: 500px) {
+            .contact-card {
+                grid-template-columns: 1fr;
+                padding: 28px 24px;
+                gap: 24px;
+            }
+            .contact-divider { display: none; }
+            .contact-item { padding: 0; }
+        }
 
         @keyframes fadeUp {
             to { opacity: 1; transform: translateY(0); }
@@ -519,15 +550,32 @@
     </div>
 
     <!-- Footer -->
-    <footer id="kontakt">
-        <p class="footer-copy">© 2025 Digilaw Sverige AB</p>
-        <div class="footer-contact">
-            <span class="label">
-                <span class="sv">Kontakt</span>
-                <span class="en" style="display:none">Contact</span>
-            </span>
+    <!-- Contact -->
+    <div class="section-eyebrow" id="kontakt">
+        <span class="sv">Kontakt</span>
+        <span class="en" style="display:none">Contact</span>
+    </div>
+    <div class="contact-card">
+        <div class="contact-item">
+            <div class="contact-label">
+                <span class="sv">E-post</span>
+                <span class="en" style="display:none">Email</span>
+            </div>
             <span id="email-link"></span>
         </div>
+        <div class="contact-divider"></div>
+        <div class="contact-item">
+            <div class="contact-label">
+                <span class="sv">Telefon</span>
+                <span class="en" style="display:none">Phone</span>
+            </div>
+            <a href="tel:+46702265099">+46 70-226 50 99</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-copy">© 2025 Digilaw Sverige AB · Org.nr 559330-4859 · VAT SE559330485901</p>
     </footer>
 
 </div>
