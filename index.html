@@ -14,62 +14,69 @@
             min-height: 100vh;
             padding: 40px 20px;
         }
-        header {
-            max-width: 720px;
-            margin: 0 auto 40px auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        header h1 {
-            font-size: 1.4em;
-            color: #1a202c;
-            letter-spacing: -0.5px;
-        }
-        nav {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-        nav a.nav-link {
-            margin-left: 20px;
-            color: #0070f3;
-            text-decoration: none;
-            font-size: 0.95em;
-            font-weight: 500;
-        }
-        nav a.nav-link:hover { text-decoration: underline; }
-        .lang-switcher {
-            margin-left: 24px;
-            display: flex;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-        .lang-switcher button {
-            background: none;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 0.85em;
-            color: #4a5568;
-            transition: background 0.15s;
-        }
-        .lang-switcher button.active {
-            background: #0070f3;
-            color: #fff;
-            font-weight: 600;
-        }
-        .lang-switcher button:hover:not(.active) { background: #edf2ff; }
 
 ```
-    .hero {
+    /* En gemensam wrapper — allt håller sig inom denna bredd */
+    .page {
         max-width: 720px;
-        margin: 0 auto 24px auto;
-        padding: 0 4px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 36px;
+    }
+    header h1 {
+        font-size: 1.4em;
+        color: #1a202c;
+        letter-spacing: -0.5px;
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    nav a.nav-link {
+        margin-left: 20px;
+        color: #0070f3;
+        text-decoration: none;
+        font-size: 0.95em;
+        font-weight: 500;
+    }
+    nav a.nav-link:hover { text-decoration: underline; }
+    .lang-switcher {
+        margin-left: 24px;
+        display: flex;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .lang-switcher button {
+        background: none;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 0.85em;
+        color: #4a5568;
+        transition: background 0.15s;
+    }
+    .lang-switcher button.active {
+        background: #0070f3;
+        color: #fff;
+        font-weight: 600;
+    }
+    .lang-switcher button:hover:not(.active) { background: #edf2ff; }
+
+    .hero {
+        margin-bottom: 20px;
     }
     .hero h2 {
         font-size: 1.6em;
@@ -83,21 +90,21 @@
         line-height: 1.75;
         color: #4a5568;
     }
+
     .section-label {
-        max-width: 720px;
-        margin: 0 auto 12px auto;
         font-size: 0.75em;
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: #a0aec0;
+        margin-bottom: 12px;
     }
+
     .services {
-        max-width: 720px;
-        margin: 0 auto 30px auto;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 16px;
+        margin-bottom: 16px;
     }
     .service-card {
         background: #ffffff;
@@ -117,13 +124,13 @@
         line-height: 1.65;
         color: #4a5568;
     }
+
     .about {
         background: #ffffff;
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        max-width: 720px;
-        margin: 0 auto 30px auto;
         padding: 36px 40px;
+        margin-bottom: 16px;
     }
     .about h2 {
         font-size: 1.3em;
@@ -144,9 +151,8 @@
         color: #718096;
         line-height: 1.8;
     }
+
     footer {
-        max-width: 720px;
-        margin: 0 auto;
         background: #ffffff;
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -172,7 +178,9 @@
 
 </head>
 <body>
+<div class="page">
 
+```
 <header>
     <h1>Digilaw Sverige AB</h1>
     <nav>
@@ -197,11 +205,12 @@
     </p>
 </div>
 
-<p class="section-label">
+<p class="section-label" id="tjanster">
     <span class="sv">Våra tjänster</span>
     <span class="en" style="display:none">Our services</span>
 </p>
-<div class="services" id="tjanster">
+
+<div class="services">
     <div class="service-card">
         <h3>
             <span class="sv">Medling</span>
@@ -268,9 +277,11 @@
         <span class="sv">Kontakt: </span><span class="en" style="display:none">Contact: </span><span id="email-link"></span>
     </p>
 </footer>
+```
+
+</div><!-- /.page -->
 
 <script>
-    // E-postadress sätts ihop i JS — syns inte i HTML-källkoden för spamrobotar
     (function() {
         var u = 'mikael';
         var d = 'digilaw' + '.' + 'se';
