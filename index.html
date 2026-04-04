@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+    <meta name="description" content="Digilaw Sverige AB är ett svenskt aktiebolag verksamt inom juridisk tvistelösning och teknikutveckling.">
     <title>Digilaw Sverige AB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +22,6 @@
             --radius: 4px;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -31,10 +31,644 @@
             min-height: 100vh;
         }
 
-        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 40px;
+            background: rgba(15, 23, 41, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201,168,76,0.15);
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .nav-brand img {
+            height: 36px;
+            width: auto;
+        }
+        .nav-brand span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15em;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: 0.04em;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.82em;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold-l); }
+        .lang-switcher {
+            display: flex;
+            border: 1px solid rgba(201,168,76,0.4);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-left: 8px;
+        }
+        .lang-switcher button {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 0.75em;
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.08em;
+            color: rgba(255,255,255,0.55);
+            transition: all 0.2s;
+        }
+        .lang-switcher button.active {
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 500;
+        }
+        .lang-switcher button:hover:not(.active) { color: var(--gold-l); }
+
+        .hero {
+            background: var(--navy);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+        .hero-logo {
+            width: min(260px, 55vw);
+            height: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 40px rgba(201,168,76,0.15));
+        }
+        .hero-tagline {
+            margin-top: 48px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(16px);
+            animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
+        }
+        .hero-tagline h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8em, 4vw, 2.8em);
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: 0.02em;
+            line-height: 1.25;
+        }
+        .hero-tagline h1 em {
+            font-style: italic;
+            color: var(--gold-l);
+        }
+        .hero-tagline p {
+            margin-top: 18px;
+            font-size: 0.92em;
+            color: rgba(255,255,255,0.5);
+            max-width: 560px;
+            line-height: 1.7;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+        .hero-cta {
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.75s forwards;
+        }
+        .hero-cta a {
+            display: inline-block;
+            padding: 12px 32px;
+            border: 1px solid var(--gold);
+            color: var(--gold-l);
+            text-decoration: none;
+            font-size: 0.78em;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.25s;
+            border-radius: 2px;
+        }
+        .hero-cta a:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .hero-note {
+            margin-top: 22px;
+            font-size: 0.78em;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.62);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.95s forwards;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            opacity: 0;
+            animation: fadeUp 1s ease 1.2s forwards;
+        }
+        .scroll-hint span {
+            display: block;
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+            margin: 0 auto;
+            animation: scrollLine 2s ease-in-out 1.5s infinite;
+        }
+        @keyframes scrollLine {
+            0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+            40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+            60%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+            100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+        }
+
+        .content {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+        }
+
+        .section-eyebrow {
+            font-size: 0.7em;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-eyebrow::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(201,168,76,0.3), transparent);
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1px;
+            background: #e0ddd6;
+            border: 1px solid #e0ddd6;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 64px;
+        }
+        .service-card {
+            background: var(--card);
+            padding: 32px 28px;
+            transition: background 0.2s;
+        }
+        .service-card:hover { background: #fdfcf8; }
+        .service-card .icon {
+            width: 32px; height: 32px;
+            margin-bottom: 18px;
+            opacity: 0.7;
+        }
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25em;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 10px;
+            letter-spacing: 0.01em;
+        }
+        .service-card p {
+            font-size: 0.88em;
+            line-height: 1.7;
+            color: var(--muted);
+            font-weight: 300;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            margin-bottom: 40px;
+        }
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.6em, 3vw, 2.2em);
+            font-weight: 300;
+            color: var(--navy);
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .about-text h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+        .about-text p {
+            font-size: 0.92em;
+            line-height: 1.8;
+            color: #555;
+            font-weight: 300;
+            margin-bottom: 14px;
+        }
+
+        .official-note {
+            margin-top: 26px;
+            margin-bottom: 28px;
+            padding: 14px 18px;
+            border: 1px solid rgba(201,168,76,0.28);
+            background: linear-gradient(180deg, #fffdfa, #fbfaf6);
+            border-radius: 4px;
+            font-size: 0.82em;
+            color: #63563a;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .org-block {
+            margin-top: 8px;
+            padding: 24px 28px;
+            background: var(--navy);
+            border-radius: 4px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 24px;
+        }
+        .org-block .label {
+            font-size: 0.68em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 2px;
+        }
+        .org-block .value {
+            font-size: 0.82em;
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+        }
+        .org-block .org-item { margin-bottom: 8px; }
+
+        .contact-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            background: var(--navy);
+            border-radius: 4px;
+            padding: 38px 40px;
+            margin-bottom: 24px;
+            gap: 28px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px 28px;
+        }
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .contact-label {
+            font-size: 0.65em;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+        }
+        .contact-item a,
+        .contact-item span,
+        .contact-item strong {
+            color: #fff;
+            font-size: 0.98em;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        .contact-item a {
+            text-decoration: none;
+            border-bottom: 1px solid rgba(201,168,76,0.4);
+            padding-bottom: 2px;
+            width: fit-content;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .contact-item a:hover {
+            color: var(--gold-l);
+            border-color: var(--gold);
+        }
+        .contact-legal {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px 28px;
+        }
+        .contact-legal .legal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2em;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .contact-legal p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.88em;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        footer {
+            border-top: 1px solid #e0ddd6;
+            padding: 24px 0 8px;
+            text-align: center;
+        }
+        footer .footer-copy {
+            font-size: 0.75em;
+            color: #9a9a9a;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 760px) {
+            .contact-grid,
+            .contact-legal,
+            .org-block {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav { padding: 14px 20px; }
+            .nav-links a { display: none; }
+            .content { padding: 60px 20px 40px; }
+            .hero { padding: 110px 24px 70px; }
+            .contact-card { padding: 28px 24px; }
+            .nav-brand span { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="nav-brand">
+        <img src="logo.jpg" alt="Digilaw">
+        <span>Digilaw Sverige AB</span>
+    </a>
+    <div class="nav-links">
+        <a href="#tjanster" class="nav-link" data-sv="Tjänster" data-en="Services">Tjänster</a>
+        <a href="#om-oss" class="nav-link" data-sv="Om oss" data-en="About">Om oss</a>
+        <a href="#kontakt" class="nav-link" data-sv="Kontakt" data-en="Contact">Kontakt</a>
+        <div class="lang-switcher">
+            <button id="btn-sv" class="active" onclick="setLang('sv')">SV</button>
+            <button id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <img src="logo.jpg" alt="Digilaw logotyp" class="hero-logo">
+    <div class="hero-tagline">
+        <h1>
+            <span class="sv">Juridik &amp; teknik — <em>i balans</em></span>
+            <span class="en" style="display:none">Law &amp; technology — <em>in balance</em></span>
+        </h1>
+        <p>
+            <span class="sv">Professionell tvistelösning och mjukvaruutveckling för en digital värld.</span>
+            <span class="en" style="display:none">Professional dispute resolution and software development for a digital world.</span>
+        </p>
+    </div>
+    <div class="hero-cta">
+        <a href="#tjanster">
+            <span class="sv">Utforska tjänsterna</span>
+            <span class="en" style="display:none">Explore services</span>
+        </a>
+    </div>
+    <div class="hero-note">
+        <span class="sv">Officiell webbplats för Digilaw Sverige AB</span>
+        <span class="en" style="display:none">Official website of Digilaw Sverige AB</span>
+    </div>
+    <div class="scroll-hint"><span></span></div>
+</section>
+
+<div class="content">
+    <div class="section-eyebrow" id="tjanster">
+        <span class="sv">Våra tjänster</span>
+        <span class="en" style="display:none">Our services</span>
+    </div>
+    <div class="services">
+        <div class="service-card">
+            <svg class="icon" viewBox="0 0 32 32" fill="none" stroke="#c9a84c" stroke-width="1.5">
+                <path d="M16 4v24M4 16h24M8 8l16 16M24 8L8 24"/>
+            </svg>
+            <h3>
+                <span class="sv">Medling</span>
+                <span class="en" style="display:none">Mediation</span>
+            </h3>
+            <p>
+                <span class="sv">Vi genomför medlingsuppdrag i kommersiella tvister och hjälper parterna att nå hållbara lösningar utan domstolsprocess.</span>
+                <span class="en" style="display:none">We conduct mediation in commercial disputes, helping parties reach durable resolutions without court proceedings.</span>
+            </p>
+        </div>
+        <div class="service-card">
+            <svg class="icon" viewBox="0 0 32 32" fill="none" stroke="#c9a84c" stroke-width="1.5">
+                <circle cx="16" cy="10" r="5"/>
+                <path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10"/>
+                <path d="M22 4l4 4-4 4"/>
+            </svg>
+            <h3>
+                <span class="sv">Skiljeförfarande</span>
+                <span class="en" style="display:none">Arbitration</span>
+            </h3>
+            <p>
+                <span class="sv">Vi åtar oss uppdrag som skiljeman i nationella och internationella tvister, med fokus på effektivitet och rättssäkerhet.</span>
+                <span class="en" style="display:none">We serve as arbitrators in domestic and international disputes, with a focus on efficiency and legal certainty.</span>
+            </p>
+        </div>
+        <div class="service-card">
+            <svg class="icon" viewBox="0 0 32 32" fill="none" stroke="#c9a84c" stroke-width="1.5">
+                <rect x="4" y="8" width="24" height="18" rx="2"/>
+                <path d="M10 8V6a2 2 0 014 0v2M18 8V6a2 2 0 014 0v2"/>
+                <path d="M4 14h24"/>
+            </svg>
+            <h3>
+                <span class="sv">Mjukvaruutveckling</span>
+                <span class="en" style="display:none">Software Development</span>
+            </h3>
+            <p>
+                <span class="sv">Vi utvecklar digitala verktyg och applikationer med inriktning mot juridiska processer, dokumenthantering och automation.</span>
+                <span class="en" style="display:none">We develop digital tools and applications focused on legal processes, document management and automation.</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="section-eyebrow" id="om-oss">
+        <span class="sv">Om oss</span>
+        <span class="en" style="display:none">About</span>
+    </div>
+    <div class="about">
+        <div class="about-text">
+            <h2>
+                <span class="sv">I skärningspunkten mellan <em>juridik</em> och teknik</span>
+                <span class="en" style="display:none">At the intersection of <em>law</em> and technology</span>
+            </h2>
+            <p>
+                <span class="sv">Digilaw Sverige AB är ett svenskt aktiebolag verksamt inom juridisk tvistelösning och teknikutveckling. Bolaget kombinerar juridisk sakkunskap med modern mjukvaruutveckling för att erbjuda effektiva och innovativa lösningar.</span>
+                <span class="en" style="display:none">Digilaw Sverige AB is a Swedish limited company active in legal dispute resolution and technology development, combining legal expertise with modern software development.</span>
+            </p>
+            <p>
+                <span class="sv">Vi verkar i ett område i stark tillväxt där digitala verktyg alltmer formar hur tvister löses och hur juridiska aktörer arbetar.</span>
+                <span class="en" style="display:none">We operate in a rapidly growing field where digital tools are increasingly shaping how disputes are resolved and how legal practitioners work.</span>
+            </p>
+
+            <div class="org-block">
+                <div class="org-item">
+                    <div class="label"><span class="sv">Bolag</span><span class="en" style="display:none">Company</span></div>
+                    <div class="value">Digilaw Sverige AB</div>
+                </div>
+                <div class="org-item">
+                    <div class="label"><span class="sv">Registrerat säte</span><span class="en" style="display:none">Registered office</span></div>
+                    <div class="value">Umeå, Sverige</div>
+                </div>
+                <div class="org-item">
+                    <div class="label"><span class="sv">Org.nr</span><span class="en" style="display:none">Reg. no.</span></div>
+                    <div class="value">559330-4859</div>
+                </div>
+                <div class="org-item">
+                    <div class="label">VAT</div>
+                    <div class="value">SE559330485901</div>
+                </div>
+                <div class="org-item">
+                    <div class="label"><span class="sv">Domän</span><span class="en" style="display:none">Domain</span></div>
+                    <div class="value">digilaw.se</div>
+                </div>
+                <div class="org-item">
+                    <div class="label"><span class="sv">Kontaktadress</span><span class="en" style="display:none">Contact email</span></div>
+                    <div class="value">mikael@digilaw.se</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-eyebrow" id="kontakt">
+        <span class="sv">Kontakt</span>
+        <span class="en" style="display:none">Contact</span>
+    </div>
+    <div class="contact-card">
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-label">
+                    <span class="sv">E-post</span>
+                    <span class="en" style="display:none">Email</span>
+                </div>
+                <span id="email-link"></span>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">
+                    <span class="sv">Telefon</span>
+                    <span class="en" style="display:none">Phone</span>
+                </div>
+                <a href="tel:+46702265099">+46 70-226 50 99</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">
+                    <span class="sv">Ort</span>
+                    <span class="en" style="display:none">Location</span>
+                </div>
+                <span>Umeå, Sverige</span>
+            </div>
+        </div>
+
+        <div class="contact-legal">
+            <div>
+                <div class="legal-title">
+                    <span class="sv">Företagsuppgifter</span>
+                    <span class="en" style="display:none">Corporate information</span>
+                </div>
+                <p>
+                    <span class="sv">Digilaw Sverige AB är ett svenskt aktiebolag med organisationsnummer 559330-4859 och VAT-nummer SE559330485901.</span>
+                    <span class="en" style="display:none">Digilaw Sverige AB is a Swedish limited company with registration number 559330-4859 and VAT number SE559330485901.</span>
+                </p>
+            </div>
+            <div>
+                <div class="legal-title">
+                    <span class="sv">Officiell webbplats</span>
+                    <span class="en" style="display:none">Official website</span>
+                </div>
+                <p>
+                    <span class="sv">Denna webbplats, digilaw.se, är Digilaw Sverige AB:s officiella domän och används för bolagets externa information och kontakt.</span>
+                    <span class="en" style="display:none">This website, digilaw.se, is the official domain of Digilaw Sverige AB and is used for the company’s external information and contact.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-copy">© 2025 Digilaw Sverige AB · Org.nr 559330-4859 · VAT SE559330485901 · Umeå, Sverige · mikael@digilaw.se · digilaw.se</p>
+    </footer>
+</div>
+
+<script>
+    (function() {
+        var u = 'mikael', d = 'digilaw.se';
+        var el = document.getElementById('email-link');
+        var a = document.createElement('a');
+        a.href = 'mai' + 'lto:' + u + '@' + d;
+        a.textContent = u + '@' + d;
+        el.appendChild(a);
+    })();
+
+    function setLang(lang) {
+        document.querySelectorAll('.sv').forEach(el => el.style.display = lang === 'sv' ? '' : 'none');
+        document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+        document.getElementById('btn-sv').classList.toggle('active', lang === 'sv');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        document.querySelectorAll('.nav-link').forEach(a => a.textContent = a.dataset[lang]);
+        document.documentElement.lang = lang;
+    }
+</script>
+</body>
+</html>            top: 0; left: 0; right: 0;
             z-index: 100;
             display: flex;
             align-items: center;
