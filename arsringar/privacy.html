@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Integritetspolicy för dagboksappen Årssringar.">
+    <title>Integritetspolicy | Årssringar</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fbfaf8;
+            --text-main: #2c352d;
+            --text-muted: #5e6b5f;
+            --accent-green: #5a8c60;
+            --accent-light: #e8efe9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navigation */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        .lang-switcher {
+            display: flex;
+            background: var(--accent-light);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .lang-switcher button {
+            background: none;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .lang-switcher button.active {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        /* Content */
+        main {
+            flex: 1;
+            max-width: 680px; /* Lite smalare för bra läsbarhet på text */
+            margin: 0 auto;
+            padding: 20px 20px 80px;
+        }
+
+        h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.2em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--text-main);
+        }
+
+        .intro {
+            font-family: 'Lora', serif;
+            font-size: 1.2em;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--accent-light);
+        }
+
+        .policy-section {
+            margin-bottom: 30px;
+        }
+
+        .policy-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 1.2em;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+
+        .policy-section p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .header-top { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-top">
+        <a href="index.html" class="back-link">
+            <span>&larr;</span>
+            <span class="sv">Tillbaka</span>
+            <span class="en" style="display:none">Back</span>
+        </a>
+        <div class="lang-switcher">
+            <button id="btn-sv" class="active" onclick="setLang('sv')">SV</button>
+            <button id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+    </div>
+
+    <main>
+        <h1>
+            <span class="sv">Integritetspolicy</span>
+            <span class="en" style="display:none">Privacy Policy</span>
+        </h1>
+        
+        <p class="intro">
+            <span class="sv">Din integritet är viktig för oss.</span>
+            <span class="en" style="display:none">Your privacy matters to us.</span>
+        </p>
+
+        <div class="policy-section">
+            <h2>
+                <span class="sv">Vad vi lagrar</span>
+                <span class="en" style="display:none">What we store</span>
+            </h2>
+            <p>
+                <span class="sv">Dina dagboksinlägg, bilder och ljudfiler lagras lokalt på enheten.</span>
+                <span class="en" style="display:none">Your diary entries, photos, and audio files are stored locally on your device.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span class="sv">Plats och väder</span>
+                <span class="en" style="display:none">Location and weather</span>
+            </h2>
+            <p>
+                <span class="sv">Om du aktiverar väderfunktionen kan din ungefärliga plats skickas till OpenWeatherMap (openweathermap.org) för att hämta aktuellt väder. Platsnamn kan även hämtas via Apples MapKit. Inga GPS-koordinater lagras i appen.</span>
+                <span class="en" style="display:none">If you enable weather features, your approximate location may be sent to OpenWeatherMap (openweathermap.org) to fetch current weather. Place names may also be retrieved via Apple's MapKit. No GPS coordinates are stored in the app.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span class="sv">iCloud</span>
+                <span class="en" style="display:none">iCloud</span>
+            </h2>
+            <p>
+                <span class="sv">Appdata synkas inte till iCloud om du inte aktivt aktiverar det i en framtida version.</span>
+                <span class="en" style="display:none">App data is not synced to iCloud unless you actively enable it in a future version.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span class="sv">Analytics och spårning</span>
+                <span class="en" style="display:none">Analytics and tracking</span>
+            </h2>
+            <p>
+                <span class="sv">Vi använder inte analytics, annonsnätverk eller tredjepartsspårning för dagboksinnehåll.</span>
+                <span class="en" style="display:none">The app contains no analytics tools, ad networks, or third-party trackers for diary content.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span class="sv">Face ID / Touch ID</span>
+                <span class="en" style="display:none">Face ID / Touch ID</span>
+            </h2>
+            <p>
+                <span class="sv">Autentisering sker via Apples LocalAuthentication-ramverk. Biometrisk data lämnar aldrig din enhet.</span>
+                <span class="en" style="display:none">Authentication is handled via Apple's LocalAuthentication framework. Biometric data never leaves your device.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span class="sv">Kontakt</span>
+                <span class="en" style="display:none">Contact</span>
+            </h2>
+            <p>
+                <span class="sv">Frågor om integritet? Kontakta oss via App Store-sidan.</span>
+                <span class="en" style="display:none">Questions about privacy? Contact us via the App Store page.</span>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        function setLang(lang) {
+            // Växla synlighet för texter
+            document.querySelectorAll('.sv').forEach(el => el.style.display = lang === 'sv' ? '' : 'none');
+            document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+            
+            // Uppdatera knappar
+            document.getElementById('btn-sv').className = lang === 'sv' ? 'active' : '';
+            document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+            
+            // Uppdatera HTML lang-attribut
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>
