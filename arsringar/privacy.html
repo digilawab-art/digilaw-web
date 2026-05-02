@@ -94,6 +94,15 @@
             padding: 20px 20px 80px;
         }
 
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 22px;
+            box-shadow: 0 8px 16px rgba(44, 53, 45, 0.15);
+            margin-bottom: 24px;
+            display: block;
+        }
+
         h1 {
             font-family: 'Lora', serif;
             font-size: 2.2em;
@@ -132,6 +141,7 @@
         @media (max-width: 600px) {
             h1 { font-size: 1.8em; }
             .header-top { padding: 20px; }
+            .app-icon { width: 80px; height: 80px; border-radius: 18px; margin-bottom: 20px; }
         }
     </style>
 </head>
@@ -140,89 +150,91 @@
     <div class="header-top">
         <a href="index.html" class="back-link">
             <span>&larr;</span>
-            <span class="sv">Tillbaka</span>
-            <span class="en" style="display:none">Back</span>
+            <span class="sv" style="display:none">Tillbaka</span>
+            <span class="en">Back</span>
         </a>
         <div class="lang-switcher">
-            <button id="btn-sv" class="active" onclick="setLang('sv')">SV</button>
-            <button id="btn-en" onclick="setLang('en')">EN</button>
+            <button id="btn-sv" onclick="setLang('sv')">SV</button>
+            <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
         </div>
     </div>
 
     <main>
+        <img src="AppIcon.png" alt="App Icon" class="app-icon">
+        
         <h1>
-            <span class="sv">Integritetspolicy</span>
-            <span class="en" style="display:none">Privacy Policy</span>
+            <span class="sv" style="display:none">Integritetspolicy</span>
+            <span class="en">Privacy Policy</span>
         </h1>
         
         <p class="intro">
-            <span class="sv">Din integritet är viktig för oss.</span>
-            <span class="en" style="display:none">Your privacy matters to us.</span>
+            <span class="sv" style="display:none">Din integritet är viktig för oss.</span>
+            <span class="en">Your privacy matters to us.</span>
         </p>
 
         <div class="policy-section">
             <h2>
-                <span class="sv">Vad vi lagrar</span>
-                <span class="en" style="display:none">What we store</span>
+                <span class="sv" style="display:none">Vad vi lagrar</span>
+                <span class="en">What we store</span>
             </h2>
             <p>
-                <span class="sv">Dina dagboksinlägg, bilder och ljudfiler lagras lokalt på enheten.</span>
-                <span class="en" style="display:none">Your diary entries, photos, and audio files are stored locally on your device.</span>
+                <span class="sv" style="display:none">Dina dagboksinlägg, bilder och ljudfiler lagras lokalt på enheten.</span>
+                <span class="en">Your diary entries, photos, and audio files are stored locally on your device.</span>
             </p>
         </div>
 
         <div class="policy-section">
             <h2>
-                <span class="sv">Plats och väder</span>
-                <span class="en" style="display:none">Location and weather</span>
+                <span class="sv" style="display:none">Plats och väder</span>
+                <span class="en">Location and weather</span>
             </h2>
             <p>
-                <span class="sv">Om du aktiverar väderfunktionen kan din ungefärliga plats skickas till OpenWeatherMap (openweathermap.org) för att hämta aktuellt väder. Platsnamn kan även hämtas via Apples MapKit. Inga GPS-koordinater lagras i appen.</span>
-                <span class="en" style="display:none">If you enable weather features, your approximate location may be sent to OpenWeatherMap (openweathermap.org) to fetch current weather. Place names may also be retrieved via Apple's MapKit. No GPS coordinates are stored in the app.</span>
+                <span class="sv" style="display:none">Om du aktiverar väderfunktionen kan din ungefärliga plats skickas till OpenWeatherMap (openweathermap.org) för att hämta aktuellt väder. Platsnamn kan även hämtas via Apples MapKit. Inga GPS-koordinater lagras i appen.</span>
+                <span class="en">If you enable weather features, your approximate location may be sent to OpenWeatherMap (openweathermap.org) to fetch current weather. Place names may also be retrieved via Apple's MapKit. No GPS coordinates are stored in the app.</span>
             </p>
         </div>
 
         <div class="policy-section">
             <h2>
-                <span class="sv">iCloud</span>
-                <span class="en" style="display:none">iCloud</span>
+                <span class="sv" style="display:none">iCloud</span>
+                <span class="en">iCloud</span>
             </h2>
             <p>
-                <span class="sv">Appdata synkas inte till iCloud om du inte aktivt aktiverar det i en framtida version.</span>
-                <span class="en" style="display:none">App data is not synced to iCloud unless you actively enable it in a future version.</span>
+                <span class="sv" style="display:none">Appdata synkas inte till iCloud om du inte aktivt aktiverar det i en framtida version.</span>
+                <span class="en">App data is not synced to iCloud unless you actively enable it in a future version.</span>
             </p>
         </div>
 
         <div class="policy-section">
             <h2>
-                <span class="sv">Analytics och spårning</span>
-                <span class="en" style="display:none">Analytics and tracking</span>
+                <span class="sv" style="display:none">Analytics och spårning</span>
+                <span class="en">Analytics and tracking</span>
             </h2>
             <p>
-                <span class="sv">Vi använder inte analytics, annonsnätverk eller tredjepartsspårning för dagboksinnehåll.</span>
-                <span class="en" style="display:none">The app contains no analytics tools, ad networks, or third-party trackers for diary content.</span>
+                <span class="sv" style="display:none">Vi använder inte analytics, annonsnätverk eller tredjepartsspårning för dagboksinnehåll.</span>
+                <span class="en">The app contains no analytics tools, ad networks, or third-party trackers for diary content.</span>
             </p>
         </div>
 
         <div class="policy-section">
             <h2>
-                <span class="sv">Face ID / Touch ID</span>
-                <span class="en" style="display:none">Face ID / Touch ID</span>
+                <span class="sv" style="display:none">Face ID / Touch ID</span>
+                <span class="en">Face ID / Touch ID</span>
             </h2>
             <p>
-                <span class="sv">Autentisering sker via Apples LocalAuthentication-ramverk. Biometrisk data lämnar aldrig din enhet.</span>
-                <span class="en" style="display:none">Authentication is handled via Apple's LocalAuthentication framework. Biometric data never leaves your device.</span>
+                <span class="sv" style="display:none">Autentisering sker via Apples LocalAuthentication-ramverk. Biometrisk data lämnar aldrig din enhet.</span>
+                <span class="en">Authentication is handled via Apple's LocalAuthentication framework. Biometric data never leaves your device.</span>
             </p>
         </div>
 
         <div class="policy-section">
             <h2>
-                <span class="sv">Kontakt</span>
-                <span class="en" style="display:none">Contact</span>
+                <span class="sv" style="display:none">Kontakt</span>
+                <span class="en">Contact</span>
             </h2>
             <p>
-                <span class="sv">Frågor om integritet? Kontakta oss via App Store-sidan.</span>
-                <span class="en" style="display:none">Questions about privacy? Contact us via the App Store page.</span>
+                <span class="sv" style="display:none">Frågor om integritet? Kontakta oss via App Store-sidan.</span>
+                <span class="en">Questions about privacy? Contact us via the App Store page.</span>
             </p>
         </div>
     </main>
