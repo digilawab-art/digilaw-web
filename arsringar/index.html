@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Årssringar - En flerårsdagbok för dina minnen.">
+    <title>Årssringar | Dagbok</title>
+    
+    <!-- Google Fonts för en bok/dagbokskänsla -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fbfaf8;
+            --text-main: #2c352d;
+            --text-muted: #5e6b5f;
+            --accent-green: #5a8c60;
+            --accent-light: #e8efe9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Språkväljare */
+        .header-top {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 30px;
+        }
+
+        .lang-switcher {
+            display: flex;
+            background: var(--accent-light);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .lang-switcher button {
+            background: none;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .lang-switcher button.active {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        /* Huvudinnehåll */
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .app-icon {
+            width: 140px;
+            height: 140px;
+            border-radius: 32px;
+            box-shadow: 0 12px 24px rgba(44, 53, 45, 0.15);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .app-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .tagline {
+            font-family: 'Lora', serif;
+            font-size: 1.3em;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+        }
+
+        /* Funktioner Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            text-align: left;
+            margin-top: 60px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid rgba(90, 140, 96, 0.1);
+        }
+
+        .feature-item h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.3em;
+            color: var(--accent-green);
+            margin-bottom: 12px;
+        }
+
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--accent-light);
+            margin-top: auto;
+        }
+
+        .privacy-link {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: opacity 0.2s;
+        }
+
+        .privacy-link:hover {
+            opacity: 0.7;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2em; }
+            .tagline { font-size: 1.1em; }
+            .features { grid-template-columns: 1fr; gap: 20px; }
+            .app-icon { width: 120px; height: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-top">
+        <div class="lang-switcher">
+            <button id="btn-sv" class="active" onclick="setLang('sv')">SV</button>
+            <button id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+    </div>
+
+    <main>
+        <!-- Byt ut src mot vad du döper bildfilen till -->
+        <img src="app-icon.jpg" alt="Årssringar App Ikon" class="app-icon">
+        
+        <h1>
+            <span class="sv">Årssringar</span>
+            <span class="en" style="display:none">Årssringar</span>
+        </h1>
+        
+        <p class="tagline">
+            <span class="sv">Dagens tankar. Livets mönster.</span>
+            <span class="en" style="display:none">Today's thoughts. Life's patterns.</span>
+        </p>
+
+        <div class="features">
+            <div class="feature-item">
+                <h3>
+                    <span class="sv">Dagen i centrum</span>
+                    <span class="en" style="display:none">Centered on Today</span>
+                </h3>
+                <p>
+                    <span class="sv">En flerårsdagbok där dagens datum alltid är i fokus. Skriv några rader varje dag och se automatiskt vad du gjorde exakt samma dag för ett, två eller fem år sedan.</span>
+                    <span class="en" style="display:none">A multi-year diary where today's date is always in focus. Write a few lines daily and automatically see what you did on this exact day one, two, or five years ago.</span>
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <h3>
+                    <span class="sv">Kontext och väder</span>
+                    <span class="en" style="display:none">Context and Weather</span>
+                </h3>
+                <p>
+                    <span class="sv">Minnen är mer än bara ord. Appen hämtar och sparar automatiskt det lokala vädret för ditt inlägg, så att du kan minnas känslan av den där regniga tisdagen.</span>
+                    <span class="en" style="display:none">Memories are more than just words. The app automatically fetches and saves the local weather for your entry, so you can remember the feeling of that rainy Tuesday.</span>
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <h3>
+                    <span class="sv">Insikter över tid</span>
+                    <span class="en" style="display:none">Insights Over Time</span>
+                </h3>
+                <p>
+                    <span class="sv">När din dagbok växer, växer även förståelsen för dig själv. Få vackra insikter om ditt skrivande, dina vanor och hur ditt liv utvecklas genom åren.</span>
+                    <span class="en" style="display:none">As your diary grows, so does the understanding of yourself. Gain beautiful insights into your writing, your habits, and how your life evolves through the years.</span>
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <h3>
+                    <span class="sv">Lokalt och säkert</span>
+                    <span class="en" style="display:none">Local and Secure</span>
+                </h3>
+                <p>
+                    <span class="sv">Dina tankar är privata. All data krypteras och sparas enbart lokalt på din egen enhet. Inga konton, inga molnservrar som snokar. Bara du och din dagbok.</span>
+                    <span class="en" style="display:none">Your thoughts are private. All data is encrypted and stored strictly locally on your own device. No accounts, no snooping cloud servers. Just you and your diary.</span>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="privacy.html" class="privacy-link">
+            <span class="sv">Integritetspolicy</span>
+            <span class="en" style="display:none">Privacy Policy</span>
+        </a>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            // Växla synlighet för texter
+            document.querySelectorAll('.sv').forEach(el => el.style.display = lang === 'sv' ? '' : 'none');
+            document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+            
+            // Uppdatera knappar
+            document.getElementById('btn-sv').className = lang === 'sv' ? 'active' : '';
+            document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+            
+            // Uppdatera HTML lang-attribut
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>
