@@ -1,3 +1,11 @@
+Searched for "privacy.body"
+Searched for "privacy.body"
+
+Inga problem! Jag har hämtat den senaste versionen av integritetspolicyn (där det tydligt framgår att allt numera kräver lösenord och kryptering) och uppdaterat din HTML-kod.
+
+Här är den kompletta och uppdaterade HTML-koden:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -178,19 +186,8 @@
                 <span class="en">What we store</span>
             </h2>
             <p>
-                <span class="sv" style="display:none">Dina dagboksinlägg, bilder och ljudfiler lagras lokalt på enheten.</span>
-                <span class="en">Your diary entries, photos, and audio files are stored locally on your device.</span>
-            </p>
-        </div>
-
-        <div class="policy-section">
-            <h2>
-                <span class="sv" style="display:none">Plats och väder</span>
-                <span class="en">Location and weather</span>
-            </h2>
-            <p>
-                <span class="sv" style="display:none">Om du aktiverar väderfunktionen kan din ungefärliga plats skickas till OpenWeatherMap (openweathermap.org) för att hämta aktuellt väder. Platsnamn kan även hämtas via Apples MapKit. Inga GPS-koordinater lagras i appen.</span>
-                <span class="en">If you enable weather features, your approximate location may be sent to OpenWeatherMap (openweathermap.org) to fetch current weather. Place names may also be retrieved via Apple's MapKit. No GPS coordinates are stored in the app.</span>
+                <span class="sv" style="display:none">Dina dagboksinlägg, stämningar, bilder, ljudfiler, datum, väderuppgifter och platsnamn lagras i appen på din enhet. Appen kräver inget konto.</span>
+                <span class="en">Your diary entries, moods, photos, audio files, dates, weather details, and place names are stored in the app on your device. The app does not require an account.</span>
             </p>
         </div>
 
@@ -200,19 +197,41 @@
                 <span class="en">iCloud</span>
             </h2>
             <p>
-                <span class="sv" style="display:none">Appdata synkas inte till iCloud om du inte aktivt aktiverar det i en framtida version.</span>
-                <span class="en">App data is not synced to iCloud unless you actively enable it in a future version.</span>
+                <span class="sv" style="display:none">Om du aktiverar iCloud-synk sparas dagboken i ditt privata iCloud-konto så att den kan synkas mellan dina enheter. Vissa små appinställningar kan också synkas via iCloud.</span>
+                <span class="en">If you turn on iCloud sync, your diary is stored in your private iCloud account so it can sync between your devices. Some small app settings may also sync through iCloud.</span>
             </p>
         </div>
 
         <div class="policy-section">
             <h2>
-                <span class="sv" style="display:none">Analytics och spårning</span>
+                <span class="sv" style="display:none">Plats och väder</span>
+                <span class="en">Location and weather</span>
+            </h2>
+            <p>
+                <span class="sv" style="display:none">Om du aktiverar plats eller väder använder appen din aktuella plats tillfälligt för att fråga Apple Weather efter väder och Apples platstjänster efter ett platsnamn. Väderuppgifter och platsnamnet kan sparas med inlägget. Dagboken sparar inte dina exakta koordinater.</span>
+                <span class="en">If you enable location or weather, the app uses your current location temporarily to ask Apple Weather for weather and Apple location services for a place name. Weather details and the place name may be saved with the entry. The diary does not save your exact coordinates.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span class="sv" style="display:none">Säkerhetskopior och export</span>
+                <span class="en">Backups and exports</span>
+            </h2>
+            <p>
+                <span class="sv" style="display:none">Säkerhetskopior och exporter kan innehålla inlägg, bilder, ljud, väder och platsnamn. De kräver lösenord och krypteras innan de sparas eller delas.</span>
+                <span class="en">Backups and exports can include entries, photos, audio, weather, and place names. They require a password and are encrypted before they are saved or shared.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span class="sv" style="display:none">Analys och spårning</span>
                 <span class="en">Analytics and tracking</span>
             </h2>
             <p>
-                <span class="sv" style="display:none">Vi använder inte analytics, annonsnätverk eller tredjepartsspårning för dagboksinnehåll.</span>
-                <span class="en">The app contains no analytics tools, ad networks, or third-party trackers for diary content.</span>
+                <span class="sv" style="display:none">Vi använder inte statistikverktyg, annonsnätverk eller tredjepartsspårning för dagboksinnehåll. Köp hanteras av Apple.</span>
+                <span class="en">We do not use analytics tools, ad networks, or third-party tracking for diary content. Purchases are handled by Apple.</span>
             </p>
         </div>
 
@@ -222,8 +241,8 @@
                 <span class="en">Face ID / Touch ID</span>
             </h2>
             <p>
-                <span class="sv" style="display:none">Autentisering sker via Apples LocalAuthentication-ramverk. Biometrisk data lämnar aldrig din enhet.</span>
-                <span class="en">Authentication is handled via Apple's LocalAuthentication framework. Biometric data never leaves your device.</span>
+                <span class="sv" style="display:none">Upplåsning sker med iOS inbyggda skydd. Biometrisk data lämnar aldrig din enhet.</span>
+                <span class="en">Unlocking uses built-in iOS protection. Biometric data never leaves your device.</span>
             </p>
         </div>
 
@@ -234,7 +253,7 @@
             </h2>
             <p>
                 <span class="sv" style="display:none">Frågor om integritet? Kontakta oss via App Store-sidan.</span>
-                <span class="en">Questions about privacy? Contact us via the App Store page.</span>
+                <span class="en">Questions about privacy? Contact us through the App Store page.</span>
             </p>
         </div>
     </main>
@@ -255,3 +274,4 @@
     </script>
 </body>
 </html>
+```
