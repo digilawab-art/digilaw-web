@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Integritetspolicy för dagboksappen Årssringar.">
-    <title>Integritetspolicy | Årssringar</title>
+    <meta name="description" content="Privacy Policy for Heartwood Diary.">
+    <title>Privacy Policy | Heartwood Diary</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,6 +35,331 @@
             display: flex;
             flex-direction: column;
         }
+
+        /* Top Navigation */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        .lang-switcher select {
+            appearance: none;
+            background-color: var(--accent-light);
+            color: var(--accent-green);
+            border: none;
+            padding: 8px 32px 8px 16px;
+            border-radius: 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            font-size: 0.9em;
+            cursor: pointer;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%235a8c60" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            outline: none;
+        }
+
+        .lang-switcher select:focus {
+            box-shadow: 0 0 0 2px var(--accent-green);
+        }
+
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 30px 60px;
+            width: 100%;
+        }
+
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 22px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.2em;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            font-family: 'Lora', serif;
+            font-size: 1.2em;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--accent-light);
+        }
+
+        .policy-section {
+            margin-bottom: 30px;
+        }
+
+        .policy-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 1.2em;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+
+        .policy-section p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .header-top { padding: 20px; }
+            .app-icon { width: 80px; height: 80px; border-radius: 18px; margin-bottom: 20px; }
+        }
+
+        /* --- Språkhantering via CSS --- */
+        span[lang] {
+            display: none; /* Dölj alla språksträngar by default */
+        }
+        html[lang="sv"] span[lang="sv"],
+        html[lang="en"] span[lang="en"],
+        html[lang="es"] span[lang="es"],
+        html[lang="fr"] span[lang="fr"],
+        html[lang="it"] span[lang="it"],
+        html[lang="pt"] span[lang="pt"] {
+            display: inline; /* Visa endast de för rootens valda språk */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-top">
+        <a href="index.html" class="back-link">
+            <span>&larr;</span>
+            <span lang="sv">Tillbaka</span>
+            <span lang="en">Back</span>
+            <span lang="es">Atrás</span>
+            <span lang="fr">Retour</span>
+            <span lang="it">Indietro</span>
+            <span lang="pt">Voltar</span>
+        </a>
+        <div class="lang-switcher">
+            <select id="lang-select" onchange="setLang(this.value)">
+                <option value="en">English</option>
+                <option value="sv">Svenska</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="it">Italiano</option>
+                <option value="pt">Português</option>
+            </select>
+        </div>
+    </div>
+
+    <main>
+        <img src="AppIcon.png" alt="App Icon" class="app-icon">
+        
+        <h1>
+            <span lang="sv">Integritetspolicy</span>
+            <span lang="en">Privacy Policy</span>
+            <span lang="es">Política de privacidad</span>
+            <span lang="fr">Politique de confidentialité</span>
+            <span lang="it">Informativa sulla privacy</span>
+            <span lang="pt">Política de Privacidade</span>
+        </h1>
+        
+        <p class="intro">
+            <span lang="sv">Din integritet är viktig för oss.</span>
+            <span lang="en">Your privacy matters to us.</span>
+            <span lang="es">Tu privacidad es importante para nosotros.</span>
+            <span lang="fr">Ta vie privée est précieuse pour nous.</span>
+            <span lang="it">La tua privacy è importante per noi.</span>
+            <span lang="pt">Sua privacidade é importante para nós.</span>
+        </p>
+
+        <div class="policy-section">
+            <h2>
+                <span lang="sv">Vad vi lagrar</span>
+                <span lang="en">What we store</span>
+                <span lang="es">Lo que almacenamos</span>
+                <span lang="fr">Ce que nous conservons</span>
+                <span lang="it">Cosa conserviamo</span>
+                <span lang="pt">O que guardamos</span>
+            </h2>
+            <p>
+                <span lang="sv">Dina dagboksinlägg, stämningar, bilder, ljudfiler, datum, väderuppgifter, platsnamn och lokalt skapade analysmetadata för insikter lagras i appen på din enhet. Analysmetadata kan omfatta språk, ordantal, känsloton och återkommande namn. Appen kräver inget konto.</span>
+                <span lang="en">Your diary entries, moods, photos, audio files, dates, weather details, place names, and locally generated insight metadata are stored in the app on your device. Insight metadata can include language, word counts, mood tone, and recurring names. The app does not require an account.</span>
+                <span lang="es">Tus entradas del diario, estados de ánimo, fotos, archivos de audio, fechas, datos del tiempo, nombres de lugares y metadatos de análisis generados localmente para insights se guardan en la app en tu dispositivo. Estos metadatos pueden incluir idioma, recuentos de palabras, tono emocional y nombres recurrentes. La app no requiere una cuenta.</span>
+                <span lang="fr">Tes entrées de journal, tes humeurs, tes photos, tes fichiers audio, les dates, les détails météo, les noms de lieux et les métadonnées d'analyse générées localement pour les insights sont stockés dans l'app sur ton appareil. Ces métadonnées peuvent inclure la langue, le nombre de mots, l'ambiance et les noms qui reviennent. L'app ne nécessite aucun compte.</span>
+                <span lang="it">Le note del diario, gli stati d'animo, le foto, i file audio, le date, i dettagli meteo, i nomi dei luoghi e i metadati di analisi generati localmente per gli insight vengono salvati nell'app sul tuo dispositivo. Questi metadati possono includere lingua, conteggi delle parole, atmosfera emotiva e nomi ricorrenti. L'app non richiede un account.</span>
+                <span lang="pt">Suas anotações do diário, humores, fotos, arquivos de áudio, datas, dados do clima, nomes de locais e metadados de análise gerados localmente para insights ficam salvos no app no seu dispositivo. Esses metadados podem incluir idioma, contagens de palavras, clima emocional e nomes recorrentes. O app não requer conta.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span lang="sv">iCloud</span>
+                <span lang="en">iCloud</span>
+                <span lang="es">iCloud</span>
+                <span lang="fr">iCloud</span>
+                <span lang="it">iCloud</span>
+                <span lang="pt">iCloud</span>
+            </h2>
+            <p>
+                <span lang="sv">Om du aktiverar iCloud-synk sparas dagboken i ditt privata iCloud-konto så att den kan synkas mellan dina enheter. Vissa små appinställningar kan också synkas via iCloud.</span>
+                <span lang="en">If you turn on iCloud sync, your diary is stored in your private iCloud account so it can sync between your devices. Some small app settings may also sync through iCloud.</span>
+                <span lang="es">Si activas la sincronización con iCloud, el diario se guarda en tu cuenta privada de iCloud para poder sincronizarse entre tus dispositivos. Algunos ajustes pequeños de la app también pueden sincronizarse mediante iCloud.</span>
+                <span lang="fr">Si tu actives la synchronisation iCloud, ton journal est enregistré dans ton compte iCloud privé afin de se synchroniser entre tes appareils. Certains petits réglages de l'app peuvent aussi se synchroniser via iCloud.</span>
+                <span lang="it">Se attivi la sincronizzazione iCloud, il diario viene salvato nel tuo account iCloud privato per sincronizzarsi tra i tuoi dispositivi. Alcune piccole impostazioni dell'app possono sincronizzarsi anche tramite iCloud.</span>
+                <span lang="pt">Se você ativar a sincronização com o iCloud, o diário fica salvo na sua conta privada do iCloud para sincronizar entre seus dispositivos. Algumas configurações pequenas do app também podem sincronizar pelo iCloud.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span lang="sv">Plats och väder</span>
+                <span lang="en">Location and weather</span>
+                <span lang="es">Lugar y tiempo</span>
+                <span lang="fr">Lieu et météo</span>
+                <span lang="it">Posizione e meteo</span>
+                <span lang="pt">Localização e clima</span>
+            </h2>
+            <p>
+                <span lang="sv">Om du aktiverar plats eller väder använder appen din aktuella plats tillfälligt för att fråga Apple Weather efter väder och Apples platstjänster efter ett platsnamn. Väderuppgifter och platsnamnet kan sparas med inlägget. Dagboken sparar inte dina exakta koordinater.</span>
+                <span lang="en">If you enable location or weather, the app uses your current location temporarily to ask Apple Weather for weather and Apple location services for a place name. Weather details and the place name may be saved with the entry. The diary does not save your exact coordinates.</span>
+                <span lang="es">Si activas ubicación o tiempo, la app usa temporalmente tu ubicación actual para consultar el tiempo en Apple Weather y un nombre de lugar en los servicios de ubicación de Apple. Los datos del tiempo y el nombre del lugar pueden guardarse con la entrada. El diario no guarda tus coordenadas exactas.</span>
+                <span lang="fr">Si tu actives le lieu ou la météo, l'app utilise temporairement ta position actuelle pour demander la météo à Apple Weather et un nom de lieu aux services de localisation d'Apple. Les détails météo et le nom du lieu peuvent être enregistrés avec l'entrée. Le journal n'enregistre pas tes coordonnées exactes.</span>
+                <span lang="it">Se attivi posizione o meteo, l'app usa temporaneamente la tua posizione attuale per chiedere il meteo ad Apple Weather e un nome di luogo ai servizi di localizzazione Apple. I dettagli meteo e il nome del luogo possono essere salvati con la nota. Il diario non salva le tue coordinate esatte.</span>
+                <span lang="pt">Se você ativar localização ou clima, o app usa temporariamente sua localização atual para consultar o Apple Weather sobre o clima e os serviços de localização da Apple sobre um nome de local. Dados do clima e o nome do local podem ser salvos com a anotação. O diário não salva suas coordenadas exatas.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span lang="sv">Säkerhetskopior och export</span>
+                <span lang="en">Backups and exports</span>
+                <span lang="es">Copias de seguridad y exportaciones</span>
+                <span lang="fr">Sauvegardes et exportations</span>
+                <span lang="it">Backup ed esportazioni</span>
+                <span lang="pt">Backups e exportações</span>
+            </h2>
+            <p>
+                <span lang="sv">Säkerhetskopior och exporter kan innehålla inlägg, bilder, ljud, väder, platsnamn och analysmetadata. De kräver lösenord och krypteras innan de sparas eller delas.</span>
+                <span lang="en">Backups and exports can include entries, photos, audio, weather, place names, and insight metadata. They require a password and are encrypted before they are saved or shared.</span>
+                <span lang="es">Las copias de seguridad y exportaciones pueden incluir entradas, fotos, audio, tiempo, nombres de lugares y metadatos de análisis. Requieren contraseña y se cifran antes de guardarse o compartirse.</span>
+                <span lang="fr">Les sauvegardes et exportations peuvent inclure des entrées, photos, fichiers audio, météo, noms de lieux et métadonnées d'analyse. Elles nécessitent un mot de passe et sont chiffrées avant d’être enregistrées ou partagées.</span>
+                <span lang="it">Backup ed esportazioni possono includere note, foto, audio, meteo, nomi di luoghi e metadati di analisi. Richiedono una password e vengono crittografati prima di essere salvati o condivisi.</span>
+                <span lang="pt">Backups e exportações podem incluir anotações, fotos, áudio, clima, nomes de locais e metadados de análise. Eles exigem senha e são criptografados antes de serem salvos ou compartilhados.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span lang="sv">Lokal analys och spårning</span>
+                <span lang="en">Local analysis and tracking</span>
+                <span lang="es">Análisis local y seguimiento</span>
+                <span lang="fr">Analyse locale et suivi</span>
+                <span lang="it">Analisi locale e tracciamento</span>
+                <span lang="pt">Análise local e rastreamento</span>
+            </h2>
+            <p>
+                <span lang="sv">Insiktsanalysen körs lokalt på din enhet. Du kan stänga av lokal AI-analys och personbaserade insikter i Inställningar. Vi använder inte statistikverktyg, annonsnätverk eller tredjepartsspårning för dagboksinnehåll. Köp hanteras av Apple.</span>
+                <span lang="en">Insight analysis runs locally on your device. You can turn off local AI analysis and person-based insights in Settings. We do not use analytics tools, ad networks, or third-party tracking for diary content. Purchases are handled by Apple.</span>
+                <span lang="es">El análisis de insights se ejecuta localmente en tu dispositivo. Puedes desactivar el análisis local con IA y los insights sobre personas en Ajustes. No utilizamos herramientas de análisis, redes publicitarias ni seguimiento de terceros para el contenido del diario. Las compras las gestiona Apple.</span>
+                <span lang="fr">L'analyse des insights s'exécute localement sur ton appareil. Tu peux désactiver l'analyse IA locale et les insights liés aux personnes dans Réglages. Nous n'utilisons aucun outil d'analyse, réseau publicitaire ou suivi tiers pour le contenu de ton journal. Les achats sont traités par Apple.</span>
+                <span lang="it">L'analisi degli insight viene eseguita localmente sul tuo dispositivo. Puoi disattivare l'analisi IA locale e gli insight basati sulle persone nelle Impostazioni. Non usiamo strumenti di analisi, reti pubblicitarie o tracciamenti di terze parti per i contenuti del tuo diario. Gli acquisti sono gestiti da Apple.</span>
+                <span lang="pt">A análise de insights roda localmente no seu dispositivo. Você pode desativar a análise local com IA e os insights baseados em pessoas em Ajustes. Não usamos ferramentas de estatística, redes de anúncios nem rastreamento de terceiros para o conteúdo do diário. Compras são processadas pela Apple.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span lang="sv">Face ID / Touch ID</span>
+                <span lang="en">Face ID / Touch ID</span>
+                <span lang="es">Face ID / Touch ID</span>
+                <span lang="fr">Face ID / Touch ID</span>
+                <span lang="it">Face ID / Touch ID</span>
+                <span lang="pt">Face ID / Touch ID</span>
+            </h2>
+            <p>
+                <span lang="sv">Upplåsning sker med iOS inbyggda skydd. Biometrisk data lämnar aldrig din enhet.</span>
+                <span lang="en">Unlocking uses built-in iOS protection. Biometric data never leaves your device.</span>
+                <span lang="es">El desbloqueo usa la protección integrada de iOS. Los datos biométricos nunca salen de tu dispositivo.</span>
+                <span lang="fr">Le déverrouillage utilise la protection intégrée d'iOS. Tes données biométriques ne quittent jamais ton appareil.</span>
+                <span lang="it">Lo sblocco usa la protezione integrata di iOS. I dati biometrici non lasciano mai il tuo dispositivo.</span>
+                <span lang="pt">O desbloqueio é feito com a proteção integrada do iOS. Seus dados biométricos nunca saem do seu dispositivo.</span>
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>
+                <span lang="sv">Kontakt</span>
+                <span lang="en">Contact</span>
+                <span lang="es">Contacto</span>
+                <span lang="fr">Contact</span>
+                <span lang="it">Contatti</span>
+                <span lang="pt">Contato</span>
+            </h2>
+            <p>
+                <span lang="sv">Frågor om integritet? Kontakta oss via App Store-sidan.</span>
+                <span lang="en">Questions about privacy? Contact us through the App Store page.</span>
+                <span lang="es">¿Tienes preguntas sobre la privacidad? Contacta con nosotros a través de la página de la App Store.</span>
+                <span lang="fr">Des questions sur la confidentialité ? Contacte-nous via la page de l'App Store.</span>
+                <span lang="it">Hai domande sulla privacy? Contattaci dalla pagina dell'App Store.</span>
+                <span lang="pt">Tem dúvidas sobre privacidade? Entre em contato pela página da App Store.</span>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        const titles = {
+            'sv': 'Integritetspolicy | Årssringar',
+            'en': 'Privacy Policy | Heartwood Diary',
+            'es': 'Política de privacidad | Heartwood Diary',
+            'fr': 'Politique de confidentialité | Heartwood Diary',
+            'it': 'Informativa sulla privacy | Heartwood Diary',
+            'pt': 'Política de Privacidade | Heartwood Diary'
+        };
+
+        function setLang(lang) {
+            // Sätt valt språk på HTML-roten vilket omedelbart triggar vår CSS
+            document.documentElement.lang = lang;
+            // Uppdatera sidans fliktitel
+            document.title = titles[lang] || titles['en'];
+        }
+
+        // Initiera rätt fliktitel och rullgardinsvärde vid start baserat på <html lang="...">
+        const currentLang = document.documentElement.lang || 'en';
+        setLang(currentLang);
+        const langSelect = document.getElementById('lang-select');
+        if (langSelect) {
+            langSelect.value = currentLang;
+        }
+    </script>
+</body>
+</html>        }
 
         /* Top Navigation */
         .header-top {
