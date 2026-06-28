@@ -3,571 +3,615 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Årsringar / Heartwood Diary - En flerårsdagbok för dina minnen.">
-    <title>Årsringar | Heartwood Diary</title>
-    
-    <!-- Google Fonts för en elegant bok- och dagbokskänsla -->
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+    <meta name="description" content="Digilaw Sverige AB är ett svenskt aktiebolag verksamt inom juridisk tvistelösning och teknikutveckling.">
+    <title>Digilaw Sverige AB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons för premium ikoner -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Ljust Tema (Inspirerat av papper, natur och trä) */
-            --bg-color: #F8F7F4;
-            --text-main: #2A362D;
-            --text-muted: #647368;
-            --accent-green: #4A7A57;
-            --accent-light: #E1E8E3;
-            --card-bg: rgba(255, 255, 255, 0.6);
-            --card-border: rgba(255, 255, 255, 0.8);
-            --glass-shadow: 0 16px 40px rgba(42, 54, 45, 0.06);
-            --blob-1: #E1E8E3;
-            --blob-2: #F1F3E9;
+            --navy:   #0f1729;
+            --navy2:  #1a2540;
+            --gold:   #c9a84c;
+            --gold-l: #e2c97e;
+            --off:    #f5f4f0;
+            --text:   #2c2c2c;
+            --muted:  #7a7a7a;
+            --card:   #ffffff;
+            --radius: 4px;
         }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                /* Mörkt Tema (Inspirerat av natt och dark mode) */
-                --bg-color: #121412;
-                --text-main: #E8EBE9;
-                --text-muted: #9BA59E;
-                --accent-green: #6C9A74;
-                --accent-light: #1E2B22;
-                --card-bg: rgba(30, 40, 33, 0.4);
-                --card-border: rgba(108, 154, 116, 0.15);
-                --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-                --blob-1: #1E2B22;
-                --blob-2: #161D18;
-            }
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--off);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 40px;
+            background: rgba(15, 23, 41, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201,168,76,0.15);
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .nav-brand img { height: 36px; width: auto; }
+        .nav-brand span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15em;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: 0.04em;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.82em;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold-l); }
+        .lang-switcher {
+            display: flex;
+            border: 1px solid rgba(201,168,76,0.4);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-left: 8px;
+        }
+        .lang-switcher button {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 0.75em;
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.08em;
+            color: rgba(255,255,255,0.55);
+            transition: all 0.2s;
+        }
+        .lang-switcher button.active {
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 500;
+        }
+        .lang-switcher button:hover:not(.active) { color: var(--gold-l); }
+
+        /* HERO */
+        .hero {
+            background: var(--navy);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
-            position: relative;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            transition: background-color 0.4s ease;
-        }
-
-        /* Abstrakta bakgrundsformer för dynamik */
-        .ambient-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.8;
-            animation: drift 20s infinite alternate ease-in-out;
-        }
-
-        .blob-1 {
-            top: -10vw;
-            left: -10vw;
-            width: 50vw;
-            height: 50vw;
-            background: var(--blob-1);
-        }
-
-        .blob-2 {
-            bottom: 20%;
-            right: -10vw;
-            width: 40vw;
-            height: 40vw;
-            background: var(--blob-2);
-            animation-delay: -5s;
-        }
-
-        @keyframes drift {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(10%, 5%) scale(1.1); }
-        }
-
-        /* Header & Språkväljare */
-        header {
-            padding: 24px 5%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .lang-switcher {
-            display: flex;
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--card-border);
-            border-radius: 30px;
-            padding: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-
-        .lang-switcher button {
-            background: transparent;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .lang-switcher button.active {
-            background: var(--text-main);
-            color: var(--bg-color);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        /* Hero Sektion */
-        main {
-            flex: 1;
-            width: 100%;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 6vh 20px 10vh;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .app-icon-container {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 40px;
-        }
-
-        .app-icon {
-            width: 100%;
-            height: 100%;
-            border-radius: 32px;
-            box-shadow: var(--glass-shadow);
-            position: relative;
-            z-index: 2;
-            object-fit: cover;
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .app-icon-shadow {
-            position: absolute;
-            top: 15px;
-            left: 5%;
-            width: 90%;
-            height: 90%;
-            background: var(--accent-green);
-            filter: blur(25px);
-            opacity: 0.3;
-            z-index: 1;
-        }
-
-        .app-icon-container:hover .app-icon {
-            transform: translateY(-8px) scale(1.02);
-        }
-
-        h1 {
-            font-family: 'Lora', serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 500;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
-
-        .tagline {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: var(--text-muted);
-            font-weight: 300;
-            line-height: 1.5;
-            max-width: 600px;
-            margin: 0 auto 50px;
-        }
-
-        /* Stiliserad App Store Knapp */
-        .app-store-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background-color: var(--text-main);
-            color: var(--bg-color);
-            padding: 12px 24px;
-            border-radius: 14px;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .app-store-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-        }
-
-        .app-store-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        .app-store-text {
-            text-align: left;
-        }
-
-        .app-store-text span {
-            display: block;
-            font-size: 0.7rem;
-            line-height: 1;
-            margin-bottom: 2px;
-            opacity: 0.9;
-        }
-
-        .app-store-text strong {
-            display: block;
-            font-size: 1.1rem;
-            line-height: 1;
-            font-weight: 600;
-        }
-
-        /* Funktioner (Grid) */
-        .features-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 80px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: var(--glass-shadow);
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            text-align: left;
-        }
-
-        /* Subtil ljusreflektion över korten vid hover */
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent-green);
-            box-shadow: 0 24px 48px rgba(42, 54, 45, 0.1);
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .icon-container {
-            width: 52px;
-            height: 52px;
-            background: var(--accent-light);
-            border-radius: 16px;
-            display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
-            color: var(--accent-green);
-        }
-
-        .feature-card h3 {
-            font-family: 'Lora', serif;
-            font-size: 1.4rem;
-            color: var(--text-main);
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        .feature-card p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        footer {
-            padding: 40px 20px;
             text-align: center;
-            border-top: 1px solid var(--card-border);
-        }
-
-        .footer-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s;
+            padding: 120px 40px 80px;
             position: relative;
-            padding-bottom: 2px;
+            overflow: hidden;
         }
-
-        .footer-link::after {
+        .hero::before {
             content: '';
             position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--text-main);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
         }
-
-        .footer-link:hover {
-            color: var(--text-main);
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
         }
-
-        .footer-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        /* Logik för Språkväxling via CSS */
-        .lang-sv, .lang-en { display: none; }
-        
-        html[lang="sv"] .lang-sv { display: block; }
-        html[lang="en"] .lang-en { display: block; }
-        
-        /* Överskrid block för inline-element */
-        html[lang="sv"] span.lang-sv, 
-        html[lang="en"] span.lang-en { display: inline; }
-
-        /* Animationer vid sidladdning */
-        .fade-up {
+        .hero-logo {
+            width: min(260px, 55vw);
+            height: auto;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeUpAnim 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 40px rgba(201,168,76,0.15));
+        }
+        .hero-tagline {
+            margin-top: 48px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(16px);
+            animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
+        }
+        .hero-tagline h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8em, 4vw, 2.8em);
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: 0.02em;
+            line-height: 1.25;
+        }
+        .hero-tagline h1 em {
+            font-style: italic;
+            color: var(--gold-l);
+        }
+        .hero-tagline p {
+            margin-top: 18px;
+            font-size: 0.92em;
+            color: rgba(255,255,255,0.5);
+            max-width: 560px;
+            line-height: 1.7;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+        .hero-cta {
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.75s forwards;
+        }
+        .hero-cta a {
+            display: inline-block;
+            padding: 12px 32px;
+            border: 1px solid var(--gold);
+            color: var(--gold-l);
+            text-decoration: none;
+            font-size: 0.78em;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.25s;
+            border-radius: 2px;
+        }
+        .hero-cta a:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            opacity: 0;
+            animation: fadeUp 1s ease 1.2s forwards;
+        }
+        .scroll-hint span {
+            display: block;
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+            margin: 0 auto;
+            animation: scrollLine 2s ease-in-out 1.5s infinite;
+        }
+        @keyframes scrollLine {
+            0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+            40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+            60%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+            100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
         }
 
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
+        /* CONTENT */
+        .content {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+        }
+        .section-eyebrow {
+            font-size: 0.7em;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-eyebrow::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(201,168,76,0.3), transparent);
+        }
 
-        @keyframes fadeUpAnim {
+        /* SERVICES */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1px;
+            background: #e0ddd6;
+            border: 1px solid #e0ddd6;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 64px;
+        }
+        .service-card {
+            background: var(--card);
+            padding: 32px 28px;
+            transition: background 0.2s;
+        }
+        .service-card:hover { background: #fdfcf8; }
+        .service-card .icon {
+            width: 32px; height: 32px;
+            margin-bottom: 18px;
+            opacity: 0.7;
+        }
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25em;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 10px;
+            letter-spacing: 0.01em;
+        }
+        .service-card p {
+            font-size: 0.88em;
+            line-height: 1.7;
+            color: var(--muted);
+            font-weight: 300;
+        }
+
+        /* ABOUT */
+        .about {
+            margin-bottom: 40px;
+        }
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.6em, 3vw, 2.2em);
+            font-weight: 300;
+            color: var(--navy);
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .about-text h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+        .about-text p {
+            font-size: 0.92em;
+            line-height: 1.8;
+            color: #555;
+            font-weight: 300;
+            margin-bottom: 14px;
+        }
+        .org-block {
+            margin-top: 32px;
+            padding: 24px 28px;
+            background: var(--navy);
+            border-radius: 4px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 24px;
+        }
+        .org-block .label {
+            font-size: 0.68em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 2px;
+        }
+        .org-block .value {
+            font-size: 0.82em;
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+        }
+        .org-block .org-item { margin-bottom: 8px; }
+
+        /* CONTACT */
+        .contact-card {
+            background: var(--navy);
+            border-radius: 4px;
+            padding: 38px 40px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px 28px;
+        }
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .contact-label {
+            font-size: 0.65em;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+        }
+        .contact-item a,
+        .contact-item span {
+            color: #fff;
+            font-size: 0.98em;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        .contact-item a {
+            text-decoration: none;
+            border-bottom: 1px solid rgba(201,168,76,0.4);
+            padding-bottom: 2px;
+            width: fit-content;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .contact-item a:hover {
+            color: var(--gold-l);
+            border-color: var(--gold);
+        }
+        .contact-org {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px 28px;
+        }
+        .contact-org-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .contact-org-item span {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.85em;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid #e0ddd6;
+            padding: 24px 0 8px;
+            text-align: center;
+        }
+        footer .footer-copy {
+            font-size: 0.75em;
+            color: #9a9a9a;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        @keyframes fadeUp {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 768px) {
-            .features-grid { grid-template-columns: 1fr; }
-            .hero { padding: 4vh 20px 6vh; }
+        @media (max-width: 760px) {
+            .contact-grid,
+            .contact-org,
+            .org-block { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            nav { padding: 14px 20px; }
+            .nav-links a { display: none; }
+            .content { padding: 60px 20px 40px; }
+            .hero { padding: 110px 24px 70px; }
+            .contact-card { padding: 28px 24px; }
+            .nav-brand span { font-size: 1em; }
         }
     </style>
 </head>
-<body lang="sv">
+<body>
 
-    <!-- Ambient Bakgrundsformer -->
-    <div class="ambient-blob blob-1"></div>
-    <div class="ambient-blob blob-2"></div>
-
-    <header class="fade-up">
+<nav>
+    <a href="#" class="nav-brand">
+        <img src="logo.jpg" alt="Digilaw">
+        <span>Digilaw Sverige AB</span>
+    </a>
+    <div class="nav-links">
+        <a href="#tjanster" class="nav-link" data-sv="Tjänster" data-en="Services">Tjänster</a>
+        <a href="#om-oss" class="nav-link" data-sv="Om oss" data-en="About">Om oss</a>
+        <a href="#kontakt" class="nav-link" data-sv="Kontakt" data-en="Contact">Kontakt</a>
         <div class="lang-switcher">
             <button id="btn-sv" class="active" onclick="setLang('sv')">SV</button>
             <button id="btn-en" onclick="setLang('en')">EN</button>
         </div>
-    </header>
+    </div>
+</nav>
 
-    <main>
-        <div class="hero fade-up delay-1">
-            <div class="app-icon-container">
-                <div class="app-icon-shadow"></div>
-                <!-- Byt ut src mot vad du döper bildfilen till -->
-                <img src="AppIcon.png" alt="Årsringar App Ikon" class="app-icon" onerror="this.src='https://via.placeholder.com/160/4A7A57/FFFFFF?text=Ikon'">
-            </div>
-            
-            <h1>
-                <span class="lang-sv">Årsringar</span>
-                <span class="lang-en">Heartwood Diary</span>
-            </h1>
-            
-            <p class="tagline">
-                <span class="lang-sv">Dagens tankar. Livets mönster. En flerårsdagbok som fångar hur ditt liv utvecklas över tid.</span>
-                <span class="lang-en">Today's thoughts. Life's patterns. A multi-year diary that captures how your life unfolds over time.</span>
-            </p>
-
-            <a href="#" class="app-store-btn">
-                <svg viewBox="0 0 384 512">
-                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
-                </svg>
-                <div class="app-store-text">
-                    <span class="lang-sv">Hämta i</span>
-                    <span class="lang-en">Download on the</span>
-                    <strong>App Store</strong>
-                </div>
-            </a>
-        </div>
-
-        <div class="features-wrapper">
-            <div class="features-grid">
-                
-                <div class="feature-card fade-up delay-2">
-                    <div class="icon-container">
-                        <i data-lucide="calendar-heart"></i>
-                    </div>
-                    <h3>
-                        <span class="lang-sv">Fokus på idag</span>
-                        <span class="lang-en">Centered on Today</span>
-                    </h3>
-                    <p>
-                        <span class="lang-sv">En klassisk flerårsdagbok i ett vackert modernt format. Skriv några rader dagligen och se dina personliga mönster träda fram över ett, två eller fem år.</span>
-                        <span class="lang-en">A classic multi-year diary in a beautiful modern format. Write a few lines daily and watch your personal patterns emerge over one, two, or five years.</span>
-                    </p>
-                </div>
-
-                <div class="feature-card fade-up delay-2">
-                    <div class="icon-container">
-                        <i data-lucide="image"></i>
-                    </div>
-                    <h3>
-                        <span class="lang-sv">Rika minnen</span>
-                        <span class="lang-en">Rich Media Entries</span>
-                    </h3>
-                    <p>
-                        <span class="lang-sv">Säg mer än bara ord. Spara foton och röstinspelningar i dina dagliga inlägg för att fånga hela känslan av dina minnen.</span>
-                        <span class="lang-en">Go beyond words. Save photos and voice recordings to your daily entries to capture the full essence of your memories.</span>
-                    </p>
-                </div>
-
-                <div class="feature-card fade-up delay-2">
-                    <div class="icon-container">
-                        <i data-lucide="cloud-sun"></i>
-                    </div>
-                    <h3>
-                        <span class="lang-sv">Kontext & väder</span>
-                        <span class="lang-en">Context & Weather</span>
-                    </h3>
-                    <p>
-                        <span class="lang-sv">Minnen är knutna till vår omgivning. Appen hämtar automatiskt det lokala vädret och hjälper dig minnas exakt känslan av en krispig höstmorgon eller varm sommarkväll.</span>
-                        <span class="lang-en">Memories are tied to our surroundings. The app automatically fetches the local weather, helping you recall the exact feeling of a crisp autumn morning or a warm summer evening.</span>
-                    </p>
-                </div>
-
-                <div class="feature-card fade-up delay-3">
-                    <div class="icon-container">
-                        <i data-lucide="bar-chart-2"></i>
-                    </div>
-                    <h3>
-                        <span class="lang-sv">Insikter över tid</span>
-                        <span class="lang-en">Insights Over Time</span>
-                    </h3>
-                    <p>
-                        <span class="lang-sv">Få en vacker, omfattande överblick över ditt skrivande och dina vanor i takt med att din dagbok växer och du utvecklas år för år.</span>
-                        <span class="lang-en">Gain a beautiful, comprehensive overview of your writing and habits as your diary grows year by year.</span>
-                    </p>
-                </div>
-
-                <div class="feature-card fade-up delay-3">
-                    <div class="icon-container">
-                        <i data-lucide="shield-check"></i>
-                    </div>
-                    <h3>
-                        <span class="lang-sv">Privat & säkert</span>
-                        <span class="lang-en">Private by Design</span>
-                    </h3>
-                    <p>
-                        <span class="lang-sv">Din dagbok är din egen. Data sparas enbart lokalt, kan synkas säkert via iCloud och låsas med Face ID. Inga annonser, ingen spårning.</span>
-                        <span class="lang-en">Your diary is yours alone. Data is stored strictly locally, can safely sync via iCloud, and lock with Face ID or Touch ID. No ads, no tracking.</span>
-                    </p>
-                </div>
-
-                <div class="feature-card fade-up delay-3">
-                    <div class="icon-container">
-                        <i data-lucide="book-open"></i>
-                    </div>
-                    <h3>
-                        <span class="lang-sv">Skriv ut din berättelse</span>
-                        <span class="lang-en">Print Your Story</span>
-                    </h3>
-                    <p>
-                        <span class="lang-sv">Förvandla dina digitala minnen till en fysisk bok. Med Premium kan du enkelt exportera och skriva ut din flerårsdagbok att spara för framtiden.</span>
-                        <span class="lang-en">Turn your digital memories into a tangible keepsake. With Premium, you can easily export and print your multi-year diary.</span>
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </main>
-
-    <footer class="fade-up delay-3">
-        <a href="privacy.html" class="footer-link">
-            <span class="lang-sv">Integritetspolicy</span>
-            <span class="lang-en">Privacy Policy</span>
+<section class="hero">
+    <img src="logo.jpg" alt="Digilaw logotyp" class="hero-logo">
+    <div class="hero-tagline">
+        <h1>
+            <span class="sv">Juridik &amp; teknik — <em>i balans</em></span>
+            <span class="en" style="display:none">Law &amp; technology — <em>in balance</em></span>
+        </h1>
+        <p>
+            <span class="sv">Professionell tvistelösning och mjukvaruutveckling för en digital värld.</span>
+            <span class="en" style="display:none">Professional dispute resolution and software development for a digital world.</span>
+        </p>
+    </div>
+    <div class="hero-cta">
+        <a href="#tjanster">
+            <span class="sv">Utforska tjänsterna</span>
+            <span class="en" style="display:none">Explore services</span>
         </a>
+    </div>
+    <div class="scroll-hint"><span></span></div>
+</section>
+
+<div class="content">
+
+    <div class="section-eyebrow" id="tjanster">
+        <span class="sv">Våra tjänster</span>
+        <span class="en" style="display:none">Our services</span>
+    </div>
+    <div class="services">
+        <div class="service-card">
+            <svg class="icon" viewBox="0 0 32 32" fill="none" stroke="#c9a84c" stroke-width="1.5">
+                <path d="M16 4v24M4 16h24M8 8l16 16M24 8L8 24"/>
+            </svg>
+            <h3><span class="sv">Medling</span><span class="en" style="display:none">Mediation</span></h3>
+            <p>
+                <span class="sv">Vi genomför medlingsuppdrag i kommersiella tvister och hjälper parterna att nå hållbara lösningar utan domstolsprocess.</span>
+                <span class="en" style="display:none">We conduct mediation in commercial disputes, helping parties reach durable resolutions without court proceedings.</span>
+            </p>
+        </div>
+        <div class="service-card">
+            <svg class="icon" viewBox="0 0 32 32" fill="none" stroke="#c9a84c" stroke-width="1.5">
+                <circle cx="16" cy="10" r="5"/>
+                <path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10"/>
+                <path d="M22 4l4 4-4 4"/>
+            </svg>
+            <h3><span class="sv">Skiljeförfarande</span><span class="en" style="display:none">Arbitration</span></h3>
+            <p>
+                <span class="sv">Vi åtar oss uppdrag som skiljeman i nationella och internationella tvister, med fokus på effektivitet och rättssäkerhet.</span>
+                <span class="en" style="display:none">We serve as arbitrators in domestic and international disputes, with a focus on efficiency and legal certainty.</span>
+            </p>
+        </div>
+        <div class="service-card">
+            <svg class="icon" viewBox="0 0 32 32" fill="none" stroke="#c9a84c" stroke-width="1.5">
+                <rect x="4" y="8" width="24" height="18" rx="2"/>
+                <path d="M10 8V6a2 2 0 014 0v2M18 8V6a2 2 0 014 0v2"/>
+                <path d="M4 14h24"/>
+            </svg>
+            <h3><span class="sv">Mjukvaruutveckling</span><span class="en" style="display:none">Software Development</span></h3>
+            <p>
+                <span class="sv">Vi utvecklar digitala verktyg och applikationer med inriktning mot juridiska processer, dokumenthantering och automation.</span>
+                <span class="en" style="display:none">We develop digital tools and applications focused on legal processes, document management and automation.</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="section-eyebrow" id="om-oss">
+        <span class="sv">Om oss</span>
+        <span class="en" style="display:none">About</span>
+    </div>
+    <div class="about">
+        <div class="about-text">
+            <h2>
+                <span class="sv">I skärningspunkten mellan <em>juridik</em> och teknik</span>
+                <span class="en" style="display:none">At the intersection of <em>law</em> and technology</span>
+            </h2>
+            <p>
+                <span class="sv">Digilaw Sverige AB är ett svenskt aktiebolag verksamt inom juridisk tvistelösning och teknikutveckling. Bolaget kombinerar juridisk sakkunskap med modern mjukvaruutveckling för att erbjuda effektiva och innovativa lösningar.</span>
+                <span class="en" style="display:none">Digilaw Sverige AB is a Swedish limited company active in legal dispute resolution and technology development, combining legal expertise with modern software development.</span>
+            </p>
+            <p>
+                <span class="sv">Vi verkar i ett område i stark tillväxt där digitala verktyg alltmer formar hur tvister löses och hur juridiska aktörer arbetar.</span>
+                <span class="en" style="display:none">We operate in a rapidly growing field where digital tools are increasingly shaping how disputes are resolved and how legal practitioners work.</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="section-eyebrow" id="kontakt">
+        <span class="sv">Kontakt</span>
+        <span class="en" style="display:none">Contact</span>
+    </div>
+    <div class="contact-card">
+
+        <!-- Zon 1: Kontaktuppgifter -->
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-label">
+                    <span class="sv">E-post</span>
+                    <span class="en" style="display:none">Email</span>
+                </div>
+                <span id="email-link"></span>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">
+                    <span class="sv">Telefon</span>
+                    <span class="en" style="display:none">Phone</span>
+                </div>
+                <a href="tel:+46702265099">+46 70-226 50 99</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">
+                    <span class="sv">Ort</span>
+                    <span class="en" style="display:none">Location</span>
+                </div>
+                <span>Umeå, Sverige</span>
+            </div>
+        </div>
+
+        <!-- Zon 2: Formell bolagsinformation -->
+        <div class="contact-org">
+            <div class="contact-org-item">
+                <div class="contact-label"><span class="sv">Bolag</span><span class="en" style="display:none">Company</span></div>
+                <span>Digilaw Sverige AB</span>
+            </div>
+            <div class="contact-org-item">
+                <div class="contact-label"><span class="sv">Org.nr</span><span class="en" style="display:none">Reg. no.</span></div>
+                <span>559330-4859</span>
+            </div>
+            <div class="contact-org-item">
+                <div class="contact-label">VAT</div>
+                <span>SE559330485901</span>
+            </div>
+            <div class="contact-org-item">
+                <div class="contact-label"><span class="sv">Säte</span><span class="en" style="display:none">Registered</span></div>
+                <span>Umeå, Sverige</span>
+            </div>
+            <div class="contact-org-item">
+                <div class="contact-label"><span class="sv">Domän</span><span class="en" style="display:none">Domain</span></div>
+                <span>digilaw.se</span>
+            </div>
+            <div class="contact-org-item">
+                <div class="contact-label"><span class="sv">Officiell webbplats</span><span class="en" style="display:none">Official website</span></div>
+                <span class="sv">Denna webbplats är Digilaw Sverige AB:s officiella domän.</span>
+                <span class="en" style="display:none">This website is the official domain of Digilaw Sverige AB.</span>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p class="footer-copy">© 2025 Digilaw Sverige AB · Org.nr 559330-4859 · VAT SE559330485901 · Umeå, Sverige · digilaw.se</p>
     </footer>
 
-    <script>
-        // Initiera ikoner
-        lucide.createIcons();
+</div>
 
-        function setLang(lang) {
-            // Uppdatera HTML lang-attribut
-            document.documentElement.lang = lang;
-            
-            // Uppdatera knappar
-            document.getElementById('btn-sv').className = lang === 'sv' ? 'active' : '';
-            document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
-            
-            // Spara preferens
-            try { localStorage.setItem('preferredLang', lang); } catch(e) {}
-        }
+<script>
+    (function() {
+        var u = 'mikael', d = 'digilaw.se';
+        var el = document.getElementById('email-link');
+        var a = document.createElement('a');
+        a.href = 'mai' + 'lto:' + u + '@' + d;
+        a.textContent = u + '@' + d;
+        a.style.color = '#ffffff';
+        a.style.textDecoration = 'none';
+        a.style.borderBottom = '1px solid rgba(201,168,76,0.4)';
+        a.style.paddingBottom = '2px';
+        a.onmouseover = function() { a.style.color = '#e2c97e'; a.style.borderColor = '#c9a84c'; };
+        a.onmouseout  = function() { a.style.color = '#ffffff'; a.style.borderColor = 'rgba(201,168,76,0.4)'; };
+        el.appendChild(a);
+    })();
 
-        // Identifiera och sätt automatiskt språk vid sidladdning
-        document.addEventListener('DOMContentLoaded', () => {
-            let userLang = 'sv'; // Standard
-            try {
-                const stored = localStorage.getItem('preferredLang');
-                if (stored) {
-                    userLang = stored;
-                } else {
-                    const browserLang = navigator.language || navigator.userLanguage;
-                    if (browserLang.startsWith('en')) userLang = 'en';
-                }
-            } catch(e) {}
-            
-            setLang(userLang);
-        });
-    </script>
+    function setLang(lang) {
+        document.querySelectorAll('.sv').forEach(el => el.style.display = lang === 'sv' ? '' : 'none');
+        document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+        document.getElementById('btn-sv').className = lang === 'sv' ? 'active' : '';
+        document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+        document.querySelectorAll('.nav-link').forEach(a => a.textContent = a.dataset[lang]);
+        document.documentElement.lang = lang;
+    }
+</script>
 </body>
 </html>
