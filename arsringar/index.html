@@ -1,23 +1,70 @@
+Viewed SKILL.md:1-115
+Listed directory metadata
+Listed directory metadata
+Listed directory sv
+Listed directory en-US
+Viewed description.txt:1-19
+Viewed description.txt:1-19
+Ran command: `npx -y modern-web-guidance@latest search "landing page layout modern glassmorphism"`
+
+Här är en komplett, omarbetad och mycket mer premium version av din landningssida. Jag har läst igenom din metadata (både den svenska och engelska) och integrerat de fina beskrivningarna direkt i sidan.
+
+Den här nya designen använder sig av moderna webbtekniker:
+*   **Elegant Glassmorphism:** Korten har en subtil frostat glas-effekt med mjuka skuggor som känns djupt och levande.
+*   **Automatiskt Dark Mode:** Sidan anpassar sig vackert efter besökarens systeminställningar (mörk/ljus bakgrund).
+*   **Levande bakgrund:** Subtila animerade färgbubblor i bakgrunden ger en modern, exklusiv känsla.
+*   **Ikoner:** Jag har integrerat det moderna ikonbiblioteket Lucide för att ge varje funktion en tydlig och premium visuell identitet.
+*   **CSS Språkhantering:** Betydligt renare sätt att växla språk utan att använda `style="display:none"` på hundra ställen, plus att den automatiskt försöker komma ihåg valet.
+*   **App Store knapp:** Jag har lagt till en snygg stiliserad knapp för att ladda ner appen, vilket konverterar mycket bättre.
+
+Här är den kompletta koden, bara att kopiera och ersätta i din `index.html`:
+
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Årssringar - En flerårsdagbok för dina minnen.">
-    <title>Årssringar | Dagbok</title>
+    <meta name="description" content="Årsringar / Heartwood Diary - En flerårsdagbok för dina minnen.">
+    <title>Årsringar | Heartwood Diary</title>
     
-    <!-- Google Fonts för en bok/dagbokskänsla -->
+    <!-- Google Fonts för en elegant bok- och dagbokskänsla -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <!-- Lucide Icons för premium ikoner -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         :root {
-            --bg-color: #fbfaf8;
-            --text-main: #2c352d;
-            --text-muted: #5e6b5f;
-            --accent-green: #5a8c60;
-            --accent-light: #e8efe9;
+            /* Ljust Tema (Inspirerat av papper, natur och trä) */
+            --bg-color: #F8F7F4;
+            --text-main: #2A362D;
+            --text-muted: #647368;
+            --accent-green: #4A7A57;
+            --accent-light: #E1E8E3;
+            --card-bg: rgba(255, 255, 255, 0.6);
+            --card-border: rgba(255, 255, 255, 0.8);
+            --glass-shadow: 0 16px 40px rgba(42, 54, 45, 0.06);
+            --blob-1: #E1E8E3;
+            --blob-2: #F1F3E9;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /* Mörkt Tema (Inspirerat av natt och dark mode) */
+                --bg-color: #121412;
+                --text-main: #E8EBE9;
+                --text-muted: #9BA59E;
+                --accent-green: #6C9A74;
+                --accent-light: #1E2B22;
+                --card-bg: rgba(30, 40, 33, 0.4);
+                --card-border: rgba(108, 154, 116, 0.15);
+                --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+                --blob-1: #1E2B22;
+                --blob-2: #161D18;
+            }
         }
 
         * {
@@ -27,14 +74,526 @@
         }
 
         body {
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.4s ease;
         }
+
+        /* Abstrakta bakgrundsformer för dynamik */
+        .ambient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.8;
+            animation: drift 20s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            top: -10vw;
+            left: -10vw;
+            width: 50vw;
+            height: 50vw;
+            background: var(--blob-1);
+        }
+
+        .blob-2 {
+            bottom: 20%;
+            right: -10vw;
+            width: 40vw;
+            height: 40vw;
+            background: var(--blob-2);
+            animation-delay: -5s;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(10%, 5%) scale(1.1); }
+        }
+
+        /* Header & Språkväljare */
+        header {
+            padding: 24px 5%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .lang-switcher {
+            display: flex;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            padding: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .lang-switcher button {
+            background: transparent;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .lang-switcher button.active {
+            background: var(--text-main);
+            color: var(--bg-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Sektion */
+        main {
+            flex: 1;
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6vh 20px 10vh;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .app-icon-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 40px;
+        }
+
+        .app-icon {
+            width: 100%;
+            height: 100%;
+            border-radius: 32px;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            z-index: 2;
+            object-fit: cover;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .app-icon-shadow {
+            position: absolute;
+            top: 15px;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            background: var(--accent-green);
+            filter: blur(25px);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .app-icon-container:hover .app-icon {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        h1 {
+            font-family: 'Lora', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        /* Stiliserad App Store Knapp */
+        .app-store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            padding: 12px 24px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .app-store-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .app-store-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .app-store-text {
+            text-align: left;
+        }
+
+        .app-store-text span {
+            display: block;
+            font-size: 0.7rem;
+            line-height: 1;
+            margin-bottom: 2px;
+            opacity: 0.9;
+        }
+
+        .app-store-text strong {
+            display: block;
+            font-size: 1.1rem;
+            line-height: 1;
+            font-weight: 600;
+        }
+
+        /* Funktioner (Grid) */
+        .features-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        /* Subtil ljusreflektion över korten vid hover */
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-green);
+            box-shadow: 0 24px 48px rgba(42, 54, 45, 0.1);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .icon-container {
+            width: 52px;
+            height: 52px;
+            background: var(--accent-light);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--accent-green);
+        }
+
+        .feature-card h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--text-main);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--text-main);
+        }
+
+        .footer-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Logik för Språkväxling via CSS */
+        .lang-sv, .lang-en { display: none; }
+        
+        html[lang="sv"] .lang-sv { display: block; }
+        html[lang="en"] .lang-en { display: block; }
+        
+        /* Överskrid block för inline-element */
+        html[lang="sv"] span.lang-sv, 
+        html[lang="en"] span.lang-en { display: inline; }
+
+        /* Animationer vid sidladdning */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUpAnim 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeUpAnim {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .hero { padding: 4vh 20px 6vh; }
+        }
+    </style>
+</head>
+<body lang="sv">
+
+    <!-- Ambient Bakgrundsformer -->
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+
+    <header class="fade-up">
+        <div class="lang-switcher">
+            <button id="btn-sv" class="active" onclick="setLang('sv')">SV</button>
+            <button id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero fade-up delay-1">
+            <div class="app-icon-container">
+                <div class="app-icon-shadow"></div>
+                <!-- Byt ut src mot vad du döper bildfilen till -->
+                <img src="AppIcon.png" alt="Årsringar App Ikon" class="app-icon" onerror="this.src='https://via.placeholder.com/160/4A7A57/FFFFFF?text=Ikon'">
+            </div>
+            
+            <h1>
+                <span class="lang-sv">Årsringar</span>
+                <span class="lang-en">Heartwood Diary</span>
+            </h1>
+            
+            <p class="tagline">
+                <span class="lang-sv">Dagens tankar. Livets mönster. En flerårsdagbok som fångar hur ditt liv utvecklas över tid.</span>
+                <span class="lang-en">Today's thoughts. Life's patterns. A multi-year diary that captures how your life unfolds over time.</span>
+            </p>
+
+            <a href="#" class="app-store-btn">
+                <svg viewBox="0 0 384 512">
+                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+                </svg>
+                <div class="app-store-text">
+                    <span class="lang-sv">Hämta i</span>
+                    <span class="lang-en">Download on the</span>
+                    <strong>App Store</strong>
+                </div>
+            </a>
+        </div>
+
+        <div class="features-wrapper">
+            <div class="features-grid">
+                
+                <div class="feature-card fade-up delay-2">
+                    <div class="icon-container">
+                        <i data-lucide="calendar-heart"></i>
+                    </div>
+                    <h3>
+                        <span class="lang-sv">Fokus på idag</span>
+                        <span class="lang-en">Centered on Today</span>
+                    </h3>
+                    <p>
+                        <span class="lang-sv">En klassisk flerårsdagbok i ett vackert modernt format. Skriv några rader dagligen och se dina personliga mönster träda fram över ett, två eller fem år.</span>
+                        <span class="lang-en">A classic multi-year diary in a beautiful modern format. Write a few lines daily and watch your personal patterns emerge over one, two, or five years.</span>
+                    </p>
+                </div>
+
+                <div class="feature-card fade-up delay-2">
+                    <div class="icon-container">
+                        <i data-lucide="image"></i>
+                    </div>
+                    <h3>
+                        <span class="lang-sv">Rika minnen</span>
+                        <span class="lang-en">Rich Media Entries</span>
+                    </h3>
+                    <p>
+                        <span class="lang-sv">Säg mer än bara ord. Spara foton och röstinspelningar i dina dagliga inlägg för att fånga hela känslan av dina minnen.</span>
+                        <span class="lang-en">Go beyond words. Save photos and voice recordings to your daily entries to capture the full essence of your memories.</span>
+                    </p>
+                </div>
+
+                <div class="feature-card fade-up delay-2">
+                    <div class="icon-container">
+                        <i data-lucide="cloud-sun"></i>
+                    </div>
+                    <h3>
+                        <span class="lang-sv">Kontext & väder</span>
+                        <span class="lang-en">Context & Weather</span>
+                    </h3>
+                    <p>
+                        <span class="lang-sv">Minnen är knutna till vår omgivning. Appen hämtar automatiskt det lokala vädret och hjälper dig minnas exakt känslan av en krispig höstmorgon eller varm sommarkväll.</span>
+                        <span class="lang-en">Memories are tied to our surroundings. The app automatically fetches the local weather, helping you recall the exact feeling of a crisp autumn morning or a warm summer evening.</span>
+                    </p>
+                </div>
+
+                <div class="feature-card fade-up delay-3">
+                    <div class="icon-container">
+                        <i data-lucide="bar-chart-2"></i>
+                    </div>
+                    <h3>
+                        <span class="lang-sv">Insikter över tid</span>
+                        <span class="lang-en">Insights Over Time</span>
+                    </h3>
+                    <p>
+                        <span class="lang-sv">Få en vacker, omfattande överblick över ditt skrivande och dina vanor i takt med att din dagbok växer och du utvecklas år för år.</span>
+                        <span class="lang-en">Gain a beautiful, comprehensive overview of your writing and habits as your diary grows year by year.</span>
+                    </p>
+                </div>
+
+                <div class="feature-card fade-up delay-3">
+                    <div class="icon-container">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <h3>
+                        <span class="lang-sv">Privat & säkert</span>
+                        <span class="lang-en">Private by Design</span>
+                    </h3>
+                    <p>
+                        <span class="lang-sv">Din dagbok är din egen. Data sparas enbart lokalt, kan synkas säkert via iCloud och låsas med Face ID. Inga annonser, ingen spårning.</span>
+                        <span class="lang-en">Your diary is yours alone. Data is stored strictly locally, can safely sync via iCloud, and lock with Face ID or Touch ID. No ads, no tracking.</span>
+                    </p>
+                </div>
+
+                <div class="feature-card fade-up delay-3">
+                    <div class="icon-container">
+                        <i data-lucide="book-open"></i>
+                    </div>
+                    <h3>
+                        <span class="lang-sv">Skriv ut din berättelse</span>
+                        <span class="lang-en">Print Your Story</span>
+                    </h3>
+                    <p>
+                        <span class="lang-sv">Förvandla dina digitala minnen till en fysisk bok. Med Premium kan du enkelt exportera och skriva ut din flerårsdagbok att spara för framtiden.</span>
+                        <span class="lang-en">Turn your digital memories into a tangible keepsake. With Premium, you can easily export and print your multi-year diary.</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="fade-up delay-3">
+        <a href="privacy.html" class="footer-link">
+            <span class="lang-sv">Integritetspolicy</span>
+            <span class="lang-en">Privacy Policy</span>
+        </a>
+    </footer>
+
+    <script>
+        // Initiera ikoner
+        lucide.createIcons();
+
+        function setLang(lang) {
+            // Uppdatera HTML lang-attribut
+            document.documentElement.lang = lang;
+            
+            // Uppdatera knappar
+            document.getElementById('btn-sv').className = lang === 'sv' ? 'active' : '';
+            document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+            
+            // Spara preferens
+            try { localStorage.setItem('preferredLang', lang); } catch(e) {}
+        }
+
+        // Identifiera och sätt automatiskt språk vid sidladdning
+        document.addEventListener('DOMContentLoaded', () => {
+            let userLang = 'sv'; // Standard
+            try {
+                const stored = localStorage.getItem('preferredLang');
+                if (stored) {
+                    userLang = stored;
+                } else {
+                    const browserLang = navigator.language || navigator.userLanguage;
+                    if (browserLang.startsWith('en')) userLang = 'en';
+                }
+            } catch(e) {}
+            
+            setLang(userLang);
+        });
+    </script>
+</body>
+</html>
+```        }
 
         /* Språkväljare */
         .header-top {
