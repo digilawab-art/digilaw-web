@@ -1,3 +1,24 @@
+Ran command: `find . -name "*.html"`
+Ran command: `find . -name "*.html"`
+Ran command: `ls -la /Users/mikael/Library/Mobile\ Documents/com\~apple\~CloudDocs/app_projects/`
+Ran command: `find . -name "*privacy*" -o -name "*Privacy*"`
+Ran command: `find /Users/mikael/Library/Mobile\ Documents/com\~apple\~CloudDocs/app_projects/ -type f -name "*.html"`
+Ran command: `grep "html" /Users/mikael/.gemini/antigravity/brain/aa34336a-0cc8-4d85-8f6f-8a6a4a093fdd/.system_generated/logs/transcript.jsonl | head -n 5`
+Ran command: `grep -A 200 "Uppdatera denna kod så att den stämmer med hur privacy nu ser ut i appen" /Users/mikael/.gemini/antigravity/brain/aa34336a-0cc8-4d85-8f6f-8a6a4a093fdd/.system_generated/logs/transcript_full.jsonl`
+Ran command: `find . -name "*.xcstrings"`
+Ran command: `find . -name "Localizable.strings"`
+Searched for "Privacy Policy"
+Viewed Localizable.strings:370-400
+Ran command: `grep -h "privacy.title\|privacy.body\|privacy.nav_link" /Users/mikael/Library/Mobile\ Documents/com\~apple\~CloudDocs/app_projects/FiveYears/FiveYears/Localization/{sv,en,es,fr,it,pt-BR}.lproj/Localizable.strings`
+Searched for "privacy.body"
+
+Här är den uppdaterade koden! Eftersom det nu är sex olika språk har jag bytt ut knapparna mot en snygg rullgardinsmeny (dropdown) i toppen. Detta blir mycket renare och smidigare på mobila skärmar.
+
+Dessutom har jag skrivit om hur språken visas – i stället för tungt javascript som ska leta upp alla element, styrs det nu uteslutande av CSS och HTML:s inbyggda `lang`-attribut. Det gör koden extremt snabb och mycket lättare för dig att bygga vidare på.
+
+Här är den kompletta, nya koden baserad på dina senaste texter i lokaliseringsfilerna:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -356,237 +377,6 @@
         const langSelect = document.getElementById('lang-select');
         if (langSelect) {
             langSelect.value = currentLang;
-        }
-    </script>
-</body>
-</html>        }
-
-        /* Top Navigation */
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 30px;
-            max-width: 800px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .back-link {
-            color: var(--accent-green);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9em;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: opacity 0.2s;
-        }
-
-        .back-link:hover {
-            opacity: 0.7;
-        }
-
-        .lang-switcher {
-            display: flex;
-            background: var(--accent-light);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .lang-switcher button {
-            background: none;
-            border: none;
-            padding: 8px 16px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 0.85em;
-            color: var(--text-muted);
-            transition: all 0.2s ease;
-        }
-
-        .lang-switcher button.active {
-            background: var(--accent-green);
-            color: white;
-        }
-
-        /* Content */
-        main {
-            flex: 1;
-            max-width: 680px; /* Lite smalare för bra läsbarhet på text */
-            margin: 0 auto;
-            padding: 20px 20px 80px;
-        }
-
-        .app-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 22px;
-            box-shadow: 0 8px 16px rgba(44, 53, 45, 0.15);
-            margin-bottom: 24px;
-            display: block;
-        }
-
-        h1 {
-            font-family: 'Lora', serif;
-            font-size: 2.2em;
-            font-weight: 600;
-            margin-bottom: 30px;
-            color: var(--text-main);
-        }
-
-        .intro {
-            font-family: 'Lora', serif;
-            font-size: 1.2em;
-            font-style: italic;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--accent-light);
-        }
-
-        .policy-section {
-            margin-bottom: 30px;
-        }
-
-        .policy-section h2 {
-            font-family: 'Lora', serif;
-            font-size: 1.2em;
-            color: var(--accent-green);
-            margin-bottom: 10px;
-        }
-
-        .policy-section p {
-            color: var(--text-muted);
-            font-size: 0.95em;
-            line-height: 1.7;
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8em; }
-            .header-top { padding: 20px; }
-            .app-icon { width: 80px; height: 80px; border-radius: 18px; margin-bottom: 20px; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="header-top">
-        <a href="index.html" class="back-link">
-            <span>&larr;</span>
-            <span class="sv" style="display:none">Tillbaka</span>
-            <span class="en">Back</span>
-        </a>
-        <div class="lang-switcher">
-            <button id="btn-sv" onclick="setLang('sv')">SV</button>
-            <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-        </div>
-    </div>
-
-    <main>
-        <img src="AppIcon.png" alt="App Icon" class="app-icon">
-        
-        <h1>
-            <span class="sv" style="display:none">Integritetspolicy</span>
-            <span class="en">Privacy Policy</span>
-        </h1>
-        
-        <p class="intro">
-            <span class="sv" style="display:none">Din integritet är viktig för oss.</span>
-            <span class="en">Your privacy matters to us.</span>
-        </p>
-
-        <div class="policy-section">
-            <h2>
-                <span class="sv" style="display:none">Vad vi lagrar</span>
-                <span class="en">What we store</span>
-            </h2>
-            <p>
-                <span class="sv" style="display:none">Dina dagboksinlägg, stämningar, bilder, ljudfiler, datum, väderuppgifter och platsnamn lagras i appen på din enhet. Appen kräver inget konto.</span>
-                <span class="en">Your diary entries, moods, photos, audio files, dates, weather details, and place names are stored in the app on your device. The app does not require an account.</span>
-            </p>
-        </div>
-
-        <div class="policy-section">
-            <h2>
-                <span class="sv" style="display:none">iCloud</span>
-                <span class="en">iCloud</span>
-            </h2>
-            <p>
-                <span class="sv" style="display:none">Om du aktiverar iCloud-synk sparas dagboken i ditt privata iCloud-konto så att den kan synkas mellan dina enheter. Vissa små appinställningar kan också synkas via iCloud.</span>
-                <span class="en">If you turn on iCloud sync, your diary is stored in your private iCloud account so it can sync between your devices. Some small app settings may also sync through iCloud.</span>
-            </p>
-        </div>
-
-        <div class="policy-section">
-            <h2>
-                <span class="sv" style="display:none">Plats och väder</span>
-                <span class="en">Location and weather</span>
-            </h2>
-            <p>
-                <span class="sv" style="display:none">Om du aktiverar plats eller väder använder appen din aktuella plats tillfälligt för att fråga Apple Weather efter väder och Apples platstjänster efter ett platsnamn. Väderuppgifter och platsnamnet kan sparas med inlägget. Dagboken sparar inte dina exakta koordinater.</span>
-                <span class="en">If you enable location or weather, the app uses your current location temporarily to ask Apple Weather for weather and Apple location services for a place name. Weather details and the place name may be saved with the entry. The diary does not save your exact coordinates.</span>
-            </p>
-        </div>
-
-        <div class="policy-section">
-            <h2>
-                <span class="sv" style="display:none">Säkerhetskopior och export</span>
-                <span class="en">Backups and exports</span>
-            </h2>
-            <p>
-                <span class="sv" style="display:none">Säkerhetskopior och exporter kan innehålla inlägg, bilder, ljud, väder och platsnamn. De kräver lösenord och krypteras innan de sparas eller delas.</span>
-                <span class="en">Backups and exports can include entries, photos, audio, weather, and place names. They require a password and are encrypted before they are saved or shared.</span>
-            </p>
-        </div>
-
-        <div class="policy-section">
-            <h2>
-                <span class="sv" style="display:none">Analys och spårning</span>
-                <span class="en">Analytics and tracking</span>
-            </h2>
-            <p>
-                <span class="sv" style="display:none">Vi använder inte statistikverktyg, annonsnätverk eller tredjepartsspårning för dagboksinnehåll. Köp hanteras av Apple.</span>
-                <span class="en">We do not use analytics tools, ad networks, or third-party tracking for diary content. Purchases are handled by Apple.</span>
-            </p>
-        </div>
-
-        <div class="policy-section">
-            <h2>
-                <span class="sv" style="display:none">Face ID / Touch ID</span>
-                <span class="en">Face ID / Touch ID</span>
-            </h2>
-            <p>
-                <span class="sv" style="display:none">Upplåsning sker med iOS inbyggda skydd. Biometrisk data lämnar aldrig din enhet.</span>
-                <span class="en">Unlocking uses built-in iOS protection. Biometric data never leaves your device.</span>
-            </p>
-        </div>
-
-        <div class="policy-section">
-            <h2>
-                <span class="sv" style="display:none">Kontakt</span>
-                <span class="en">Contact</span>
-            </h2>
-            <p>
-                <span class="sv" style="display:none">Frågor om integritet? Kontakta oss via App Store-sidan.</span>
-                <span class="en">Questions about privacy? Contact us through the App Store page.</span>
-            </p>
-        </div>
-    </main>
-
-    <script>
-        function setLang(lang) {
-            // Växla synlighet för texter
-            document.querySelectorAll('.sv').forEach(el => el.style.display = lang === 'sv' ? '' : 'none');
-            document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
-            
-            // Uppdatera knappar
-            document.getElementById('btn-sv').className = lang === 'sv' ? 'active' : '';
-            document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
-            
-            // Uppdatera HTML lang-attribut
-            document.documentElement.lang = lang;
         }
     </script>
 </body>
